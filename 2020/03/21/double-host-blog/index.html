@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.downk.cc/item/5e7605929d7d586a54062f58.png">
 <meta property="article:published_time" content="2020-03-21T11:52:03.000Z">
-<meta property="article:modified_time" content="2020-03-21T12:20:40.852Z">
+<meta property="article:modified_time" content="2020-03-21T12:25:27.104Z">
 <meta property="article:author" content="Mofeng">
 <meta property="article:tag" content="Github">
 <meta property="article:tag" content="博客">
@@ -323,6 +323,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/21/double-host-blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/03/21/double-host-blog/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,7 +362,7 @@
 <p>每个服务具体的操作我就不介绍了，可以看我以前的博客，或者网上查询，我主要说一下怎么双线部署。</p>
 <a id="more"></a>
 
-<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>Coding平台使用的是CNAME解析，绑定自定义域名之后，可以一件申请到SSL证书。</p>
+<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>Coding平台使用的是CNAME解析，绑定自定义域名之后，可以一键申请到SSL证书。</p>
 <p>Github平台我采用的是A记录解析，同样也是为了强制SSL，共有四个IP地址可供选择。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.153</span><br><span class="line">185.199.109.153</span><br><span class="line">185.199.110.153</span><br><span class="line">185.199.111.153</span><br></pre></td></tr></table></figure>
 
@@ -433,6 +443,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
 
   
 
@@ -720,6 +737,43 @@
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'mofengboy# MUST HAVE, Your Github ID',
+            repo: 'blog.sunan.me/# MUST HAVE, The repo you use to store Gitment comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'fbcecbeb3fbfe8f25d228645b52117f877daf183# EITHER this or proxy_gateway, Github access secret token for the Gitment',
+            
+                client_id: '60b73f378a881b5fe092# MUST HAVE, Github client id for the Gitment'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
