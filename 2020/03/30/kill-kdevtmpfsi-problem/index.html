@@ -87,7 +87,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e81c9dc504f4bcb0431ef7e.png">
 <meta property="og:image" content="https://pic.downk.cc/item/5e82032b504f4bcb0460f04d.png">
 <meta property="article:published_time" content="2020-03-30T06:52:16.000Z">
-<meta property="article:modified_time" content="2020-03-30T14:42:56.400Z">
+<meta property="article:modified_time" content="2020-04-20T12:15:50.599Z">
 <meta property="article:author" content="Mofeng">
 <meta property="article:tag" content="黑客">
 <meta property="article:tag" content="挖矿">
@@ -452,10 +452,16 @@
 <p>没有发现可疑定时任务。</p>
 <h3 id="最终解决办法"><a href="#最终解决办法" class="headerlink" title="最终解决办法"></a>最终解决办法</h3><p>大家不要学我 Σ( ° △ °|||)︴ ，我最后迫不得已选择了用<strong>魔法打败魔法</strong>。</p>
 <p>我写了一个shell脚本，用来kill这两个进程，创建了一个定时任务，一分钟执行一次。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line">kill -9 $(ps -ef | grep kdevtmpfsi| grep -v grep | awk '&#123;print $2&#125;')</span><br><span class="line">kill -9 $(ps -ef | grep kinsing| grep -v grep | awk '&#123;print $2&#125;')</span><br><span class="line">echo "----------------------------------------------------------------------------"</span><br><span class="line">endDate=`date +"%Y-%m-%d %H:%M:%S"`</span><br><span class="line">echo "★[$endDate] Successful"</span><br><span class="line">echo "----------------------------------------------------------------------------"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line">kill -9 $(ps -ef | grep kdevtmpfsi| grep -v grep | awk '&#123;print $2&#125;')</span><br><span class="line">kill -9 $(ps -ef | grep kinsing| grep -v grep | awk '&#123;print $2&#125;')</span><br><span class="line">rm -rf /tmp/kdevtmpfsi </span><br><span class="line">rm -rf /var/tmp/kinsing  </span><br><span class="line">echo "----------------------------------------------------------------------------"</span><br><span class="line">endDate=`date +"%Y-%m-%d %H:%M:%S"`</span><br><span class="line">echo "★[$endDate] Successful"</span><br><span class="line">echo "----------------------------------------------------------------------------"</span><br></pre></td></tr></table></figure>
 
 
 
+<h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p>后来解决了。</p>
+<p>因为服务器学校组织的，长时间下来积累了一些废弃的应用和开放了一下不必要的端口，后来根据阿里云安全中心的提示，发现是 redis 6379配置问题。</p>
+<p>具体相关可以查看阿里云的文档。</p>
+<blockquote>
+<p><a href="https://help.aliyun.com/knowledge_detail/37447.html" target="_blank" rel="noopener">https://help.aliyun.com/knowledge_detail/37447.html</a> </p>
+</blockquote>
 
       
     </div>
@@ -519,6 +525,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/13/zhuanyedaolunwebxingmufenxiangjingyan/" rel="prev" title="专业导论课上的大学阶段web项目开发经验分享">
+                专业导论课上的大学阶段web项目开发经验分享 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -598,7 +608,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -620,7 +630,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -663,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#症状"><span class="nav-number">1.</span> <span class="nav-text">症状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决过程"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#尝试杀掉进程和删除文件"><span class="nav-number">2.1.</span> <span class="nav-text">尝试杀掉进程和删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用service代替systemctl"><span class="nav-number">2.2.</span> <span class="nav-text">使用service代替systemctl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill守护进程"><span class="nav-number">2.3.</span> <span class="nav-text">kill守护进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#屏蔽IP地址，重置公钥和实例远程登录密码"><span class="nav-number">2.4.</span> <span class="nav-text">屏蔽IP地址，重置公钥和实例远程登录密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阿里云提交工单"><span class="nav-number">2.5.</span> <span class="nav-text">阿里云提交工单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看是否有定时任务"><span class="nav-number">2.6.</span> <span class="nav-text">查看是否有定时任务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终解决办法"><span class="nav-number">3.</span> <span class="nav-text">最终解决办法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#症状"><span class="nav-number">1.</span> <span class="nav-text">症状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决过程"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#尝试杀掉进程和删除文件"><span class="nav-number">2.1.</span> <span class="nav-text">尝试杀掉进程和删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用service代替systemctl"><span class="nav-number">2.2.</span> <span class="nav-text">使用service代替systemctl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill守护进程"><span class="nav-number">2.3.</span> <span class="nav-text">kill守护进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#屏蔽IP地址，重置公钥和实例远程登录密码"><span class="nav-number">2.4.</span> <span class="nav-text">屏蔽IP地址，重置公钥和实例远程登录密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阿里云提交工单"><span class="nav-number">2.5.</span> <span class="nav-text">阿里云提交工单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看是否有定时任务"><span class="nav-number">2.6.</span> <span class="nav-text">查看是否有定时任务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终解决办法"><span class="nav-number">3.</span> <span class="nav-text">最终解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后续"><span class="nav-number">4.</span> <span class="nav-text">后续</span></a></li></ol></div>
             
 
           </div>
