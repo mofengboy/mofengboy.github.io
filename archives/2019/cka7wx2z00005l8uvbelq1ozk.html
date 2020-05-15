@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="伪静态,nginx," />
+  <meta name="keywords" content="Github,hexo," />
 
 
 
@@ -75,19 +75,30 @@
 
 
 
-<meta name="description" content="经过考虑我决定把我的文艺方面的记录和技术方面是分开，于是我创建了两个目录，装两个wordpress。经过折腾终于分开了。但是我发现，所有的网站内页的文章都是404了。 刚开始我以为是数据库的问题，但是我查遍了整个数据库也没发现问题。最后我想到是不是伪静态的问题，当我把固定链接改为朴素模式的时候，果然好了，于是确定了是伪静态的问题。">
+<meta name="description" content="准备工作：1.检查电脑是否安装了 Git ？git --version2.检查是否安装node?node -v 本地搭建博客1.在合适位置创建一个一个名为blog的文件夹，鼠标右击打开Git Bush Here 2.安装Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双站点二级目录配置wordpress伪静态">
-<meta property="og:url" content="https://blog.sunan.me/2019/01/24/double-wordpress/index.html">
+<meta property="og:title" content="利用Hexo和GitHub搭建独立博客">
+<meta property="og:url" content="https://blog.sunan.me/archives/2019/cka7wx2z00005l8uvbelq1ozk.html">
 <meta property="og:site_name" content="苏南先生的博客">
-<meta property="og:description" content="经过考虑我决定把我的文艺方面的记录和技术方面是分开，于是我创建了两个目录，装两个wordpress。经过折腾终于分开了。但是我发现，所有的网站内页的文章都是404了。 刚开始我以为是数据库的问题，但是我查遍了整个数据库也没发现问题。最后我想到是不是伪静态的问题，当我把固定链接改为朴素模式的时候，果然好了，于是确定了是伪静态的问题。">
+<meta property="og:description" content="准备工作：1.检查电脑是否安装了 Git ？git --version2.检查是否安装node?node -v 本地搭建博客1.在合适位置创建一个一个名为blog的文件夹，鼠标右击打开Git Bush Here 2.安装Hexo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-01-24T04:00:00.000Z">
-<meta property="article:modified_time" content="2020-03-21T08:16:28.964Z">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c4ee9d7d586a54cd3524.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c7cf9d7d586a54d095c1.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c97c9d7d586a54d234e4.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c97c9d7d586a54d234e6.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c7cf9d7d586a54d095bc.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c97c9d7d586a54d234e8.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c91c9d7d586a54d1e60c.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c91c9d7d586a54d1e60f.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c91c9d7d586a54d1e612.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5e75c7cf9d7d586a54d095bf.png">
+<meta property="article:published_time" content="2019-10-13T04:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-21T08:16:38.904Z">
 <meta property="article:author" content="Mofeng">
-<meta property="article:tag" content="伪静态">
-<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.downk.cc/item/5e75c4ee9d7d586a54cd3524.png">
 
 
 
@@ -117,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://blog.sunan.me/2019/01/24/double-wordpress/"/>
+  <link rel="canonical" href="https://blog.sunan.me/archives/2019/cka7wx2z00005l8uvbelq1ozk.html"/>
 
 
 
 
 
-  <title>双站点二级目录配置wordpress伪静态 | 苏南先生的博客</title>
+  <title>利用Hexo和GitHub搭建独立博客 | 苏南先生的博客</title>
   
 
 
@@ -260,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/2019/01/24/double-wordpress/">
+    <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/archives/2019/cka7wx2z00005l8uvbelq1ozk.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mofeng">
@@ -277,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">双站点二级目录配置wordpress伪静态</h1>
+          <h1 class="post-title" itemprop="name headline">利用Hexo和GitHub搭建独立博客</h1>
         
 
         <div class="post-meta">
@@ -289,8 +300,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-24T12:00:00+08:00">
-                2019-01-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T12:00:00+08:00">
+                2019-10-13
               </time>
             
 
@@ -312,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
                   </a>
                 </span>
 
@@ -349,15 +360,58 @@
       
 
       
-        <p>经过考虑我决定把我的文艺方面的记录和技术方面是分开，于是我创建了两个目录，装两个wordpress。经过折腾终于分开了。但是我发现，所有的网站内页的文章都是404了。</p>
-<p>刚开始我以为是数据库的问题，但是我查遍了整个数据库也没发现问题。最后我想到是不是伪静态的问题，当我把固定链接改为朴素模式的时候，果然好了，于是确定了是伪静态的问题。</p>
+        <h3 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h3><p>1.检查电脑是否安装了 Git ？<br><code>git --version</code><br>2.检查是否安装node?<br><code>node -v</code></p>
+<h3 id="本地搭建博客"><a href="#本地搭建博客" class="headerlink" title="本地搭建博客"></a>本地搭建博客</h3><p>1.在合适位置创建一个一个名为blog的文件夹，鼠标右击打开Git Bush Here</p>
+<p>2.安装Hexo</p>
 <a id="more"></a>
 
-<p>但是现在问题来了，一个nginx的配置文件怎么配置两套伪静态规则呢？</p>
-<p>源码：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> /memory &#123;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.html)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.html <span class="literal">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.php)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (!-f <span class="variable">$request_filename</span>)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) /memory/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="attribute">location</span> /it &#123;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.html)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.html <span class="literal">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.php)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (!-f <span class="variable">$request_filename</span>)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) /it/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>2.1</p>
+<p><code>cnpm install -g hexo</code></p>
+<p><img src="https://pic.downk.cc/item/5e75c4ee9d7d586a54cd3524.png" alt=""></p>
+<p>2.2<br><code>hexo init</code><br>看到以下目录结构说明初始化完成</p>
+<p><img src="https://pic.downk.cc/item/5e75c7cf9d7d586a54d095c1.png" alt=""></p>
+<p>2.3</p>
+<p>选择主题</p>
+<p><code>git clone https://gitee.com/xiuxiuing/hexo-theme-even themes/even</code></p>
+<p>这里选择的是even主题，获取更多主题可以访问 <a href="https://hexo.io/themes" target="_blank" rel="noopener">https://hexo.io/themes</a></p>
+<p>2.4</p>
+<p>_config.yml对博客进行基础配置</p>
+<p>修改博客名字、作者名字、和主题</p>
+<p>主题改为theme:even</p>
+<p>保存。</p>
+<p><img src="https://pic.downk.cc/item/5e75c97c9d7d586a54d234e4.png" alt=""></p>
+<p><img src="https://pic.downk.cc/item/5e75c97c9d7d586a54d234e6.png" alt=""></p>
+<p>2.5 本地预览博客</p>
+<p>首先安装两个插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-renderer-scss --save</span><br><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
-<p> 注意有两处要修改的地方！ </p>
+<p>编译项目，输入命令：</p>
+<p><code>hexo g</code></p>
+<p>运行项目，输入命令：</p>
+<p><code>hexo s</code></p>
+<p>在浏览器中输入<code>http://localhost:4000/</code>就可以看到效果啦</p>
+<p><img src="https://pic.downk.cc/item/5e75c7cf9d7d586a54d095bc.png" alt=""></p>
+<h3 id="部署到Github上"><a href="#部署到Github上" class="headerlink" title="部署到Github上"></a>部署到Github上</h3><p>3.1 注册Github账号并创建博客仓库</p>
+<p><img src="https://pic.downk.cc/item/5e75c97c9d7d586a54d234e8.png" alt=""></p>
+<p>如果是首次使用github,需要先设置Ssh key</p>
+<p>3.1.1 设置git的user name和email,需要操作以下命令，自行替换相应字段。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Mofeng"</span><br><span class="line">git config --global user.email "me@sunan.me"</span><br></pre></td></tr></table></figure>
+
+<p>3.1.2 生成Ssh Key</p>
+<p><code>ssh-keygen -t rsa -C &quot;me@sunan.me&quot;</code></p>
+<p>过程不需要设置密码。直接按回车或y直至结束。</p>
+<p>3.1.3 打开C:\Users\用户名.ssh,可以看到三个文件。</p>
+<p><img src="https://pic.downk.cc/item/5e75c91c9d7d586a54d1e60c.png" alt=""></p>
+<p>3.1.4 用记事本打开id_rsa.pub，复制里面的所有内容，打开setting页面中的SSH and GPG keys,然后 new ssh key</p>
+<p><img src="https://pic.downk.cc/item/5e75c91c9d7d586a54d1e60f.png" alt=""></p>
+<p>3.1.5 将复制的内容粘贴到key 中</p>
+<p><img src="https://pic.downk.cc/item/5e75c91c9d7d586a54d1e612.png" alt=""></p>
+<p>3.2 修改项目根目录的__config.yml文件，完成部署配置。</p>
+<p><img src="https://pic.downk.cc/item/5e75c7cf9d7d586a54d095bf.png" alt=""></p>
+<p>3.3 输入命令</p>
+<p><code>hexo d</code></p>
+<p>打开你设置的仓库地址 <a href="https://mofengmo.github.io" target="_blank" rel="noopener">https://mofengmo.github.io</a></p>
+<p>成功。</p>
 
       
     </div>
@@ -378,7 +432,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://blog.sunan.me/2019/01/24/double-wordpress/" title="双站点二级目录配置wordpress伪静态">https://blog.sunan.me/2019/01/24/double-wordpress/</a>
+    <a href="https://blog.sunan.me/archives/2019/cka7wx2z00005l8uvbelq1ozk.html" title="利用Hexo和GitHub搭建独立博客">https://blog.sunan.me/archives/2019/cka7wx2z00005l8uvbelq1ozk.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -393,9 +447,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E4%BC%AA%E9%9D%99%E6%80%81/" rel="tag"># 伪静态</a>
+            <a href="/tags/Github/" rel="tag"># Github</a>
           
-            <a href="/tags/nginx/" rel="tag"># nginx</a>
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
           
         </div>
       
@@ -408,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/23/douban-api/" rel="next" title="利用反向代理让微信小程序获取豆瓣API">
-                <i class="fa fa-chevron-left"></i> 利用反向代理让微信小程序获取豆瓣API
+              <a href="/archives/2019/cka7wx2yz0003l8uv1ite23ss.html" rel="next" title="输入名字识别男女开发全过程附实例">
+                <i class="fa fa-chevron-left"></i> 输入名字识别男女开发全过程附实例
               </a>
             
           </div>
@@ -418,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/25/boy-or-girl/" rel="prev" title="输入名字识别男女开发全过程附实例">
-                输入名字识别男女开发全过程附实例 <i class="fa fa-chevron-right"></i>
+              <a href="/archives/2020/cka7wx2z2000bl8uvc9xd0gg0.html" rel="prev" title="博客迁移至Github Pages">
+                博客迁移至Github Pages <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -475,8 +529,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -546,6 +609,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作："><span class="nav-number">1.</span> <span class="nav-text">准备工作：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地搭建博客"><span class="nav-number">2.</span> <span class="nav-text">本地搭建博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到Github上"><span class="nav-number">3.</span> <span class="nav-text">部署到Github上</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

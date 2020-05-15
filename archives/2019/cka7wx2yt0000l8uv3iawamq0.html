@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="Github,hexo,博客," />
+  <meta name="keywords" content="伪静态,nginx," />
 
 
 
@@ -75,19 +75,18 @@
 
 
 
-<meta name="description" content="折腾来折腾去，我又回来这里了。">
+<meta name="description" content="经过考虑我决定把我的文艺方面的记录和技术方面是分开，于是我创建了两个目录，装两个wordpress。经过折腾终于分开了。但是我发现，所有的网站内页的文章都是404了。 刚开始我以为是数据库的问题，但是我查遍了整个数据库也没发现问题。最后我想到是不是伪静态的问题，当我把固定链接改为朴素模式的时候，果然好了，于是确定了是伪静态的问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客迁移至Github Pages">
-<meta property="og:url" content="https://blog.sunan.me/2020/03/21/I-am-back/index.html">
+<meta property="og:title" content="双站点二级目录配置wordpress伪静态">
+<meta property="og:url" content="https://blog.sunan.me/archives/2019/cka7wx2yt0000l8uv3iawamq0.html">
 <meta property="og:site_name" content="苏南先生的博客">
-<meta property="og:description" content="折腾来折腾去，我又回来这里了。">
+<meta property="og:description" content="经过考虑我决定把我的文艺方面的记录和技术方面是分开，于是我创建了两个目录，装两个wordpress。经过折腾终于分开了。但是我发现，所有的网站内页的文章都是404了。 刚开始我以为是数据库的问题，但是我查遍了整个数据库也没发现问题。最后我想到是不是伪静态的问题，当我把固定链接改为朴素模式的时候，果然好了，于是确定了是伪静态的问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-21T06:37:16.000Z">
-<meta property="article:modified_time" content="2020-04-05T13:56:11.264Z">
+<meta property="article:published_time" content="2019-01-24T04:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-21T08:16:28.964Z">
 <meta property="article:author" content="Mofeng">
-<meta property="article:tag" content="Github">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="博客">
+<meta property="article:tag" content="伪静态">
+<meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://blog.sunan.me/2020/03/21/I-am-back/"/>
+  <link rel="canonical" href="https://blog.sunan.me/archives/2019/cka7wx2yt0000l8uv3iawamq0.html"/>
 
 
 
 
 
-  <title>博客迁移至Github Pages | 苏南先生的博客</title>
+  <title>双站点二级目录配置wordpress伪静态 | 苏南先生的博客</title>
   
 
 
@@ -261,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/2020/03/21/I-am-back/">
+    <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/archives/2019/cka7wx2yt0000l8uv3iawamq0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mofeng">
@@ -278,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">博客迁移至Github Pages</h1>
+          <h1 class="post-title" itemprop="name headline">双站点二级目录配置wordpress伪静态</h1>
         
 
         <div class="post-meta">
@@ -290,8 +289,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-21T14:37:16+08:00">
-                2020-03-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-24T12:00:00+08:00">
+                2019-01-24
               </time>
             
 
@@ -313,8 +312,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/chat/" itemprop="url" rel="index">
-                    <span itemprop="name">chat</span>
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
                   </a>
                 </span>
 
@@ -350,8 +349,16 @@
       
 
       
-        <p>折腾来折腾去，我又回来这里了。</p>
+        <p>经过考虑我决定把我的文艺方面的记录和技术方面是分开，于是我创建了两个目录，装两个wordpress。经过折腾终于分开了。但是我发现，所有的网站内页的文章都是404了。</p>
+<p>刚开始我以为是数据库的问题，但是我查遍了整个数据库也没发现问题。最后我想到是不是伪静态的问题，当我把固定链接改为朴素模式的时候，果然好了，于是确定了是伪静态的问题。</p>
 <a id="more"></a>
+
+<p>但是现在问题来了，一个nginx的配置文件怎么配置两套伪静态规则呢？</p>
+<p>源码：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> /memory &#123;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.html)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.html <span class="literal">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.php)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (!-f <span class="variable">$request_filename</span>)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) /memory/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="attribute">location</span> /it &#123;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.html)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.html <span class="literal">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>/index.php)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) <span class="variable">$1</span>/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="attribute">if</span> (!-f <span class="variable">$request_filename</span>)&#123;</span><br><span class="line">                    <span class="attribute">rewrite</span> (.*) /it/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p> 注意有两处要修改的地方！ </p>
+
       
     </div>
     
@@ -371,7 +378,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://blog.sunan.me/2020/03/21/I-am-back/" title="博客迁移至Github Pages">https://blog.sunan.me/2020/03/21/I-am-back/</a>
+    <a href="https://blog.sunan.me/archives/2019/cka7wx2yt0000l8uv3iawamq0.html" title="双站点二级目录配置wordpress伪静态">https://blog.sunan.me/archives/2019/cka7wx2yt0000l8uv3iawamq0.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -386,11 +393,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Github/" rel="tag"># Github</a>
+            <a href="/tags/%E4%BC%AA%E9%9D%99%E6%80%81/" rel="tag"># 伪静态</a>
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-            <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
           
         </div>
       
@@ -403,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/13/hexo-github-blog/" rel="next" title="利用Hexo和GitHub搭建独立博客">
-                <i class="fa fa-chevron-left"></i> 利用Hexo和GitHub搭建独立博客
+              <a href="/archives/2019/cka7wx2yy0001l8uv4s6e2asq.html" rel="next" title="利用反向代理让微信小程序获取豆瓣API">
+                <i class="fa fa-chevron-left"></i> 利用反向代理让微信小程序获取豆瓣API
               </a>
             
           </div>
@@ -413,8 +418,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/21/double-host-blog/" rel="prev" title="Hexo 自定义域名双线部署到Coding和Github">
-                Hexo 自定义域名双线部署到Coding和Github <i class="fa fa-chevron-right"></i>
+              <a href="/archives/2019/cka7wx2yz0003l8uv1ite23ss.html" rel="prev" title="输入名字识别男女开发全过程附实例">
+                输入名字识别男女开发全过程附实例 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
