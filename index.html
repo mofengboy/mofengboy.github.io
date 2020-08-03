@@ -347,19 +347,16 @@
 
       
         
-          
-            <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在静态的方法中使用 Mybatis Mapper, SpringBoot注解@Autowired 是不行的。</p>
+          <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在静态的方法中使用 Mybatis Mapper, SpringBoot注解@Autowired 是不行的。</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>创建一个工具类，并且使用 @PostConstruct 注解 。</p>
 <p> 该注解会在类加载之前自动执行标识的方法,并在方法中把静态的类赋值给非静态的类。</p>
-<h4 id="工具类代码"><a href="#工具类代码" class="headerlink" title="工具类代码"></a>工具类代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticUtil</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> HumitureMapper humitureMapper;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HumitureMapper staticHumitureMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        staticHumitureMapper = humitureMapper;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HumitureMapper <span class="title">getStaticMapper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> staticHumitureMapper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">StaticUtil humitureMapper;</span><br><span class="line"></span><br><span class="line">HumitureMapper humitureMapper = StaticUtil.getStaticMapper();</span><br></pre></td></tr></table></figure>
-
-<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><blockquote>
-<p><a href="https://blog.csdn.net/XmanAron/article/details/100515820" target="_blank" rel="noopener">https://blog.csdn.net/XmanAron/article/details/100515820</a> </p>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/archives/2020/ckdeclfhk000044uv8xp54stw.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
