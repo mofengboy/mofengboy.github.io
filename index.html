@@ -403,6 +403,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/archives/2020/cke3lu73o0000vwuv6qfx3i7q.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mofeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏南的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/archives/2020/cke3lu73o0000vwuv6qfx3i7q.html" itemprop="url">利用csv包读取和写入tsv文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-03T17:56:16+08:00">
+                2020-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>总结一下tsv文件的操作方法，备忘。</p>
+<h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'file.tsv'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    tsv_w = csv.writer(f, delimiter=<span class="string">'\t'</span>) <span class="comment"># delimiter必须</span></span><br><span class="line">    tsv_w.writerow([<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'score'</span>])  <span class="comment"># 单行写入</span></span><br><span class="line">    tsv_w.writerows([[<span class="number">1</span>, <span class="string">'Frank'</span>, <span class="number">99</span>], [<span class="number">2</span>, <span class="string">'John'</span>, <span class="number">70</span>]])  <span class="comment"># 多行写入</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'file.tsv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    tsvreader = csv.reader(f, delimiter=<span class="string">'\t'</span>)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> tsvreader:</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过修改解析文件模式实现上述操作"><a href="#通过修改解析文件模式实现上述操作" class="headerlink" title="通过修改解析文件模式实现上述操作"></a>通过修改解析文件模式实现上述操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"> </span><br><span class="line">csv.register_dialect(<span class="string">'my_dialect'</span>,delimiter=<span class="string">'\t'</span>,quoting=csv.QUOTE_ALL)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'file.tsv'</span>,) <span class="keyword">as</span> csv_file:</span><br><span class="line">    file_list = csv.reader(csv_file,<span class="string">'my_dialect'</span>)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> file_list:</span><br><span class="line">        <span class="keyword">print</span> (line)</span><br><span class="line"></span><br><span class="line">csv.unregister_dialect(my_dialect) <span class="comment">#注销</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/archives/2020/ckbbw6lnj000040uvc2zf2d2n.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1574,153 +1724,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/archives/2019/cka7wx2yt0000l8uv3iawamq0.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mofeng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="苏南的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/archives/2019/cka7wx2yt0000l8uv3iawamq0.html" itemprop="url">双站点二级目录配置wordpress伪静态</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-24T12:00:00+08:00">
-                2019-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>经过考虑我决定把我的文艺方面的记录和技术方面是分开，于是我创建了两个目录，装两个wordpress。经过折腾终于分开了。但是我发现，所有的网站内页的文章都是404了。</p>
-<p>刚开始我以为是数据库的问题，但是我查遍了整个数据库也没发现问题。最后我想到是不是伪静态的问题，当我把固定链接改为朴素模式的时候，果然好了，于是确定了是伪静态的问题。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/archives/2019/cka7wx2yt0000l8uv3iawamq0.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1772,7 +1775,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1783,7 +1786,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1794,7 +1797,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
