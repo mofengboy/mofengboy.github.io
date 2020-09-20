@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="python,NLP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="背景知识Embeddings Embedding（嵌入）是拓扑学里面的词。 在深度学习中的意思是使用低纬度的的数据表示高纬度的数据。例如，在NLP中，“ I have an apple ”这句话中的每个单词可以分别用4维向量表示。 I [1,0,0,0] have [0,1,0,0] an [0,0,1,0] apple [0,0,0,1] 这种方法叫做word embedding. One-Ho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用paddlepaddle实现word2vec模型">
+<meta property="og:url" content="https://blog.sunan.me/archives/2020/ckfao6h6r00006cuv2lf0bjnt.html">
+<meta property="og:site_name" content="苏南的博客">
+<meta property="og:description" content="背景知识Embeddings Embedding（嵌入）是拓扑学里面的词。 在深度学习中的意思是使用低纬度的的数据表示高纬度的数据。例如，在NLP中，“ I have an apple ”这句话中的每个单词可以分别用4维向量表示。 I [1,0,0,0] have [0,1,0,0] an [0,0,1,0] apple [0,0,0,1] 这种方法叫做word embedding. One-Ho">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://external-link.sunan.me/blog/200920/i8jLgj1bgi.png?imageslim">
+<meta property="article:published_time" content="2020-09-20T02:55:00.000Z">
+<meta property="article:modified_time" content="2020-09-20T05:37:36.940Z">
+<meta property="article:author" content="Mofeng">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://external-link.sunan.me/blog/200920/i8jLgj1bgi.png?imageslim">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.sunan.me/archives/2020/ckfao6h6r00006cuv2lf0bjnt.html"/>
+
+
+
+
+
+  <title>使用paddlepaddle实现word2vec模型 | 苏南的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">苏南的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            Links
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-主站">
+          <a href="https://sunan.me" target="_blank" rel="section noopener">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主站
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.sunan.me/archives/2020/ckfao6h6r00006cuv2lf0bjnt.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mofeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏南的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用paddlepaddle实现word2vec模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-20T10:55:00+08:00">
+                2020-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><h4 id="Embeddings"><a href="#Embeddings" class="headerlink" title="Embeddings"></a>Embeddings</h4><p> Embedding（嵌入）是拓扑学里面的词。</p>
+<p>在深度学习中的意思是使用低纬度的的数据表示高纬度的数据。例如，在NLP中，“ I have an apple ”这句话中的每个单词可以分别用4维向量表示。</p>
+<p>I [1,0,0,0]</p>
+<p>have [0,1,0,0]</p>
+<p>an [0,0,1,0]</p>
+<p>apple [0,0,0,1]</p>
+<p>这种方法叫做word embedding.</p>
+<h4 id="One-Hot编码"><a href="#One-Hot编码" class="headerlink" title="One-Hot编码"></a>One-Hot编码</h4><p>one-hot编码是将文本转化成二级制的一种编码。在训练word2vec模型之前，我们需要利用训练数据构建自己的词汇表，在对词汇表进行one-hot编码。</p>
+<p>例如： 假设从我们的训练文档中抽取出100个唯一不重复的单词组成词汇表。我们对这100个单词进行one-hot编码，得到的每个单词都是一个100维的向量，向量每个维度的值只有0或者1，假如单词have在词汇表中的出现位置为第3个，那么have的one-hot表示就是一个第三维度取值为1，其他维都为0的100维的向量。 </p>
+<h3 id="word2vec原理简述"><a href="#word2vec原理简述" class="headerlink" title="word2vec原理简述"></a>word2vec原理简述</h3><h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>现在word2vec已经成为了自然语言处理领域的基础，在他之后的预训练模型或多或少都借鉴了他的一部分思想。</p>
+<p>在word2vec训练完成之后，我们并不会使用这个模型处理新的任务，而是需要它的参数矩阵。word2vec模型有两种训练方法，skip-gram和CBOW。本文主要介绍使用skip-gram方法及其实现代码。</p>
+<h4 id="skip-gram"><a href="#skip-gram" class="headerlink" title="skip-gram"></a>skip-gram</h4><p>如下图所示，直观理解skip-gram是给定input word来预测上下文。</p>
+<p><img src="https://external-link.sunan.me/blog/200920/i8jLgj1bgi.png?imageslim" alt="mark"></p>
+<h4 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h4><p>我们拿“I have an apple”这句话举例。</p>
+<ol>
+<li>首先选一个中间词作为input word，例如我们选择了have。</li>
+<li>定义一个参数skip_windows ，它代表着从input word 的一侧（左或者右）选取词的数量，例如我们选取skip_windows = 2,那么获得的窗口中的词(包换input word)是[I,have,an,apple]</li>
+<li>定义一个参数num_skips ,他代表从整个窗口中选用多少次作为output word.例如当skip_windows =2,并且num_skips =2时，我们会得到两组{input word,output wold}。</li>
+<li>神经网络通过这些数据输出一个概率分布，这个概率代表着我们词典中每个词是output wold的可能性。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>网络结构定义代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">skip_gram_word2vec</span><span class="params">(dict_size, embedding_size, is_sparse=False, neg_num=<span class="number">5</span>)</span>:</span></span><br><span class="line">    datas = []</span><br><span class="line">    input_word = fluid.layers.data(name=<span class="string">"input_word"</span>, shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>)</span><br><span class="line">    true_word = fluid.layers.data(name=<span class="string">'true_label'</span>, shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>)</span><br><span class="line">    neg_word = fluid.layers.data(</span><br><span class="line">        name=<span class="string">"neg_label"</span>, shape=[neg_num], dtype=<span class="string">'int64'</span>)</span><br><span class="line"></span><br><span class="line">    datas.append(input_word)</span><br><span class="line">    datas.append(true_word)</span><br><span class="line">    datas.append(neg_word)</span><br><span class="line"></span><br><span class="line">    py_reader = fluid.layers.create_py_reader_by_data(</span><br><span class="line">        capacity=<span class="number">64</span>, feed_list=datas, name=<span class="string">'py_reader'</span>, use_double_buffer=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    words = fluid.layers.read_file(py_reader)</span><br><span class="line">    init_width = <span class="number">0.5</span> / embedding_size</span><br><span class="line">    input_emb = fluid.layers.embedding(</span><br><span class="line">        input=words[<span class="number">0</span>],</span><br><span class="line">        is_sparse=is_sparse,</span><br><span class="line">        size=[dict_size, embedding_size],</span><br><span class="line">        param_attr=fluid.ParamAttr(</span><br><span class="line">            name=<span class="string">'emb'</span>,</span><br><span class="line">            initializer=fluid.initializer.Uniform(-init_width, init_width)))</span><br><span class="line"></span><br><span class="line">    true_emb_w = fluid.layers.embedding(</span><br><span class="line">        input=words[<span class="number">1</span>],</span><br><span class="line">        is_sparse=is_sparse,</span><br><span class="line">        size=[dict_size, embedding_size],</span><br><span class="line">        param_attr=fluid.ParamAttr(</span><br><span class="line">            name=<span class="string">'emb_w'</span>, initializer=fluid.initializer.Constant(value=<span class="number">0.0</span>)))</span><br><span class="line"></span><br><span class="line">    true_emb_b = fluid.layers.embedding(</span><br><span class="line">        input=words[<span class="number">1</span>],</span><br><span class="line">        is_sparse=is_sparse,</span><br><span class="line">        size=[dict_size, <span class="number">1</span>],</span><br><span class="line">        param_attr=fluid.ParamAttr(</span><br><span class="line">            name=<span class="string">'emb_b'</span>, initializer=fluid.initializer.Constant(value=<span class="number">0.0</span>)))</span><br><span class="line">    neg_word_reshape = fluid.layers.reshape(words[<span class="number">2</span>], shape=[<span class="number">-1</span>, <span class="number">1</span>])</span><br><span class="line">    neg_word_reshape.stop_gradient = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    neg_emb_w = fluid.layers.embedding(</span><br><span class="line">        input=neg_word_reshape,</span><br><span class="line">        is_sparse=is_sparse,</span><br><span class="line">        size=[dict_size, embedding_size],</span><br><span class="line">        param_attr=fluid.ParamAttr(</span><br><span class="line">            name=<span class="string">'emb_w'</span>, learning_rate=<span class="number">1.0</span>))</span><br><span class="line"></span><br><span class="line">    neg_emb_w_re = fluid.layers.reshape(</span><br><span class="line">        neg_emb_w, shape=[<span class="number">-1</span>, neg_num, embedding_size])</span><br><span class="line">    neg_emb_b = fluid.layers.embedding(</span><br><span class="line">        input=neg_word_reshape,</span><br><span class="line">        is_sparse=is_sparse,</span><br><span class="line">        size=[dict_size, <span class="number">1</span>],</span><br><span class="line">        param_attr=fluid.ParamAttr(</span><br><span class="line">            name=<span class="string">'emb_b'</span>, learning_rate=<span class="number">1.0</span>))</span><br><span class="line"></span><br><span class="line">    neg_emb_b_vec = fluid.layers.reshape(neg_emb_b, shape=[<span class="number">-1</span>, neg_num])</span><br><span class="line">    true_logits = fluid.layers.elementwise_add(</span><br><span class="line">        fluid.layers.reduce_sum(</span><br><span class="line">            fluid.layers.elementwise_mul(input_emb, true_emb_w),</span><br><span class="line">            dim=<span class="number">1</span>,</span><br><span class="line">            keep_dim=<span class="literal">True</span>),</span><br><span class="line">        true_emb_b)</span><br><span class="line">    input_emb_re = fluid.layers.reshape(</span><br><span class="line">        input_emb, shape=[<span class="number">-1</span>, <span class="number">1</span>, embedding_size])</span><br><span class="line">    neg_matmul = fluid.layers.matmul(</span><br><span class="line">        input_emb_re, neg_emb_w_re, transpose_y=<span class="literal">True</span>)</span><br><span class="line">    neg_matmul_re = fluid.layers.reshape(neg_matmul, shape=[<span class="number">-1</span>, neg_num])</span><br><span class="line">    neg_logits = fluid.layers.elementwise_add(neg_matmul_re, neg_emb_b_vec)</span><br><span class="line">    <span class="comment">#nce loss</span></span><br><span class="line"></span><br><span class="line">    label_ones = fluid.layers.fill_constant_batch_size_like(</span><br><span class="line">        true_logits, shape=[<span class="number">-1</span>, <span class="number">1</span>], value=<span class="number">1.0</span>, dtype=<span class="string">'float32'</span>)</span><br><span class="line">    label_zeros = fluid.layers.fill_constant_batch_size_like(</span><br><span class="line">        true_logits, shape=[<span class="number">-1</span>, neg_num], value=<span class="number">0.0</span>, dtype=<span class="string">'float32'</span>)</span><br><span class="line"></span><br><span class="line">    true_xent = fluid.layers.sigmoid_cross_entropy_with_logits(true_logits,</span><br><span class="line">                                                               label_ones)</span><br><span class="line">    neg_xent = fluid.layers.sigmoid_cross_entropy_with_logits(neg_logits,</span><br><span class="line">                                                              label_zeros)</span><br><span class="line">    cost = fluid.layers.elementwise_add(</span><br><span class="line">        fluid.layers.reduce_sum(</span><br><span class="line">            true_xent, dim=<span class="number">1</span>),</span><br><span class="line">        fluid.layers.reduce_sum(</span><br><span class="line">            neg_xent, dim=<span class="number">1</span>))</span><br><span class="line">    avg_cost = fluid.layers.reduce_mean(cost)</span><br><span class="line">    <span class="keyword">return</span> avg_cost, py_reader</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">infer_network</span><span class="params">(vocab_size, emb_size)</span>:</span></span><br><span class="line">    analogy_a = fluid.layers.data(name=<span class="string">"analogy_a"</span>, shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>)</span><br><span class="line">    analogy_b = fluid.layers.data(name=<span class="string">"analogy_b"</span>, shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>)</span><br><span class="line">    analogy_c = fluid.layers.data(name=<span class="string">"analogy_c"</span>, shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>)</span><br><span class="line">    all_label = fluid.layers.data(</span><br><span class="line">        name=<span class="string">"all_label"</span>,</span><br><span class="line">        shape=[vocab_size, <span class="number">1</span>],</span><br><span class="line">        dtype=<span class="string">'int64'</span>,</span><br><span class="line">        append_batch_size=<span class="literal">False</span>)</span><br><span class="line">    emb_all_label = fluid.layers.embedding(</span><br><span class="line">        input=all_label, size=[vocab_size, emb_size], param_attr=<span class="string">"emb"</span>)</span><br><span class="line"></span><br><span class="line">    emb_a = fluid.layers.embedding(</span><br><span class="line">        input=analogy_a, size=[vocab_size, emb_size], param_attr=<span class="string">"emb"</span>)</span><br><span class="line">    emb_b = fluid.layers.embedding(</span><br><span class="line">        input=analogy_b, size=[vocab_size, emb_size], param_attr=<span class="string">"emb"</span>)</span><br><span class="line">    emb_c = fluid.layers.embedding(</span><br><span class="line">        input=analogy_c, size=[vocab_size, emb_size], param_attr=<span class="string">"emb"</span>)</span><br><span class="line">    target = fluid.layers.elementwise_add(</span><br><span class="line">        fluid.layers.elementwise_sub(emb_b, emb_a), emb_c)</span><br><span class="line">    emb_all_label_l2 = fluid.layers.l2_normalize(x=emb_all_label, axis=<span class="number">1</span>)</span><br><span class="line">    dist = fluid.layers.matmul(x=target, y=emb_all_label_l2, transpose_y=<span class="literal">True</span>)</span><br><span class="line">    values, pred_idx = fluid.layers.topk(input=dist, k=<span class="number">4</span>)</span><br><span class="line">    <span class="keyword">return</span> values, pred_idx</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>[1]  Rong X. word2vec parameter learning explained[J]. arXiv preprint arXiv:1411.2738, 2014. </p>
+<p>[2]  <a href="https://zhuanlan.zhihu.com/p/37471802" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/37471802</a> </p>
+<p>[3]  <a href="https://aistudio.baidu.com/aistudio/projectdetail/978573" target="_blank" rel="noopener">https://aistudio.baidu.com/aistudio/projectdetail/978573</a> </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Mofeng
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://blog.sunan.me/archives/2020/ckfao6h6r00006cuv2lf0bjnt.html" title="使用paddlepaddle实现word2vec模型">https://blog.sunan.me/archives/2020/ckfao6h6r00006cuv2lf0bjnt.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/2020/ckdeclfhk000044uv8xp54stw.html" rel="next" title="SpringBoot中静态类调用自动注入的Mapper">
+                <i class="fa fa-chevron-left"></i> SpringBoot中静态类调用自动注入的Mapper
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div id="comments" class="gitalk-container">
+  </div>
+ 
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mofeng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mofengboy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景知识"><span class="nav-number">1.</span> <span class="nav-text">背景知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Embeddings"><span class="nav-number">1.1.</span> <span class="nav-text">Embeddings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#One-Hot编码"><span class="nav-number">1.2.</span> <span class="nav-text">One-Hot编码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word2vec原理简述"><span class="nav-number">2.</span> <span class="nav-text">word2vec原理简述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在前面"><span class="nav-number">2.1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skip-gram"><span class="nav-number">2.2.</span> <span class="nav-text">skip-gram</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练过程"><span class="nav-number">2.3.</span> <span class="nav-text">训练过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陌风小同学</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">ICP证：<a target="_blank" href="http://www.beian.miit.gov.cn">鲁ICP备15022835号-1</a> | <script type="text/javascript" src="https://s95.cnzz.com/z_stat.php?id=1259526004&web_id=1259526004"></script> | Hosted by GitHub Pages && Coding Pages | Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'ab43e22fa390c4cd8bd4',
+      clientSecret: 'f08d8706a1f4d0c3e9310ec4ad714cf0b17e0d46',
+      repo: 'mofengboy.github.io',
+      owner: 'mofengboy',
+      admin: ['mofengboy'],
+      id: location.pathname,
+      distractionFreeMode: 'false'
+    })
+    gitalk.render('comments')
+  </script>
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
