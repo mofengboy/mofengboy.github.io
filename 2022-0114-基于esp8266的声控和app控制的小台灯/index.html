@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Mr.Su">
+    
+    <title>
+        
+            基于esp8266的小爱同学和app控制的小台灯 |
+        
+        Sunan&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/null">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"sunan.me","root":"/","language":"en"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+               Sunan&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">基于esp8266的小爱同学和app控制的小台灯</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Mr.Su</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-01-14 21:55:14</span>
+        <span class="mobile">2022-01-14 21:55</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-07-28 18:40:42</span>
+    </span>
+    
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h4 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h4><p><img src="https://external-link.sunan.me/blog/220114/dj35klDeDc.png?imageslim" alt="mark"></p>
+<span id="more"></span>
+
+<h4 id="esp8266-代码"><a href="#esp8266-代码" class="headerlink" title="esp8266 代码"></a>esp8266 代码</h4><p>使用 arduino ide 烧录esp8266代码，如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 wifi 模块</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ESP8266WiFi.h&gt;</span></span></span><br><span class="line"><span class="type">static</span> WiFiClient espClient;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入阿里云 IoT SDK</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;AliyunIoTSDK.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置产品和设备的信息，从阿里云设备信息里查看</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRODUCT_KEY <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEVICE_NAME <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEVICE_SECRET <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> REGION_ID <span class="string">&quot;cn-shanghai&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置 wifi 信息</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> WIFI_SSID <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> WIFI_PASSWD <span class="string">&quot;&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化 wifi 连接</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">wifiInit</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *ssid, <span class="type">const</span> <span class="type">char</span> *passphrase)</span></span><br><span class="line">&#123;</span><br><span class="line">    WiFi.mode(WIFI_STA);</span><br><span class="line">    WiFi.begin(ssid, passphrase);</span><br><span class="line">    <span class="keyword">while</span> (WiFi.status() != WL_CONNECTED)</span><br><span class="line">    &#123;</span><br><span class="line">        delay(<span class="number">1000</span>);</span><br><span class="line">        Serial.println(<span class="string">&quot;WiFi not Connect&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Serial.println(<span class="string">&quot;Connected to AP&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性修改的回调函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">brightnessCallback</span><span class="params">(JsonVariant p)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> brightness = p[<span class="string">&quot;table_lamp:brightness&quot;</span>];</span><br><span class="line">      <span class="comment">// 改变亮度</span></span><br><span class="line">    <span class="keyword">if</span> (brightness == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      switch_brightness();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性修改的回调函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">lightingtoneCallback</span><span class="params">(JsonVariant p)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> lightingtone = p[<span class="string">&quot;table_lamp:lightingtone&quot;</span>];</span><br><span class="line">     <span class="comment">// 改变色调</span></span><br><span class="line">    <span class="keyword">if</span> (lightingtone == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      switch_lightingtone();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">setup</span><span class="params">()</span> &#123;</span><br><span class="line">   Serial.begin(<span class="number">9600</span>);</span><br><span class="line">    <span class="comment">// 初始化 wifi</span></span><br><span class="line">    wifiInit(WIFI_SSID, WIFI_PASSWD);</span><br><span class="line">    <span class="comment">// 初始化 iot，需传入 wifi 的 client，和设备产品信息</span></span><br><span class="line">    AliyunIoTSDK::begin(espClient, PRODUCT_KEY, DEVICE_NAME, DEVICE_SECRET, REGION_ID);</span><br><span class="line">    <span class="comment">// 绑定一个设备属性回调，当远程修改此属性，会触发 powerCallback</span></span><br><span class="line">    AliyunIoTSDK::bindData(<span class="string">&quot;table_lamp:brightness&quot;</span>, brightnessCallback);</span><br><span class="line">        <span class="comment">// 绑定一个设备属性回调，当远程修改此属性，会触发 powerCallback</span></span><br><span class="line">    AliyunIoTSDK::bindData(<span class="string">&quot;table_lamp:lightingtone&quot;</span>, lightingtoneCallback);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">loop</span><span class="params">()</span> &#123;</span><br><span class="line">  AliyunIoTSDK::loop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//改变亮度</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">switch_brightness</span><span class="params">()</span>&#123;</span><br><span class="line">  pinMode(LED_BUILTIN, HIGH);</span><br><span class="line">  pinMode(<span class="number">16</span>, HIGH);</span><br><span class="line">  delay(<span class="number">100</span>);</span><br><span class="line">  pinMode(<span class="number">16</span>, LOW);</span><br><span class="line">  pinMode(LED_BUILTIN, LOW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//改变灯光色调</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">switch_lightingtone</span><span class="params">()</span>&#123;</span><br><span class="line">  pinMode(LED_BUILTIN, HIGH);</span><br><span class="line">  pinMode(<span class="number">16</span>, HIGH);</span><br><span class="line">  delay(<span class="number">1200</span>);</span><br><span class="line">  pinMode(<span class="number">16</span>, LOW);</span><br><span class="line">  pinMode(LED_BUILTIN, LOW);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="阿里云IOT平台"><a href="#阿里云IOT平台" class="headerlink" title="阿里云IOT平台"></a>阿里云IOT平台</h4><ol>
+<li><p>完成实例、产品、设备注册。</p>
+</li>
+<li><p>配置物模型数据，相当于制作一个抽象的、数字化的台灯。通过这个物模型，控制实际设备。</p>
+</li>
+</ol>
+<p>模型TSL如下。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;schema&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://iotx-tsl.oss-ap-southeast-1.aliyuncs.com/schema.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;profile&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;productKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gs6cY8aZKGQ&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brightness&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;亮度&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;accessMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rw&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1为调节亮度&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;required&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lightingtone&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;色调&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;accessMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rw&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1为调节色调&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;required&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;events&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;post&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;post&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;info&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;required&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;属性上报&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;thing.event.property.post&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;outputData&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brightness&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;亮度&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lightingtone&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;色调&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;services&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;set&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;set&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;required&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;callType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;async&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;属性设置&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;thing.service.property.set&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;inputData&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brightness&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;亮度&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lightingtone&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;色调&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;outputData&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;get&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;get&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;required&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;callType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;async&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;属性获取&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;thing.service.property.get&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;inputData&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;brightness&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;lightingtone&quot;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;outputData&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brightness&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;亮度&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lightingtone&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;色调&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bool&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;specs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;开&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;functionBlockId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;table_lamp&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;functionBlockName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;台灯模块&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="阿里云云函数"><a href="#阿里云云函数" class="headerlink" title="阿里云云函数"></a>阿里云云函数</h4><p>通过 <em>Serverless</em> 可以无服务器部署后端，方便快捷，关键还免费（小额使用）。</p>
+<p>云函数代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">main</span> = <span class="keyword">async</span> (event, context) =&gt; &#123;</span><br><span class="line">	<span class="comment">//event为客户端上传的参数</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;event : &#x27;</span>, event)</span><br><span class="line">	<span class="keyword">const</span> <span class="title class_">Core</span> = <span class="built_in">require</span>(<span class="string">&#x27;@alicloud/pop-core&#x27;</span>);</span><br><span class="line">	<span class="keyword">var</span> client = <span class="keyword">new</span> <span class="title class_">Core</span>(&#123;</span><br><span class="line">		<span class="attr">accessKeyId</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="attr">accessKeySecret</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="comment">// securityToken: &#x27;&lt;your-sts-token&gt;&#x27;, // use STS Token</span></span><br><span class="line">		<span class="attr">endpoint</span>: <span class="string">&#x27;https://iot.cn-shanghai.aliyuncs.com&#x27;</span>,</span><br><span class="line">		<span class="attr">apiVersion</span>: <span class="string">&#x27;2018-01-20&#x27;</span></span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">let</span> b = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">let</span> l = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(event[<span class="string">&quot;isBrightness&quot;</span>] == <span class="number">1</span>)&#123;</span><br><span class="line">		b = <span class="number">1</span>;</span><br><span class="line">		l = <span class="number">0</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		b = <span class="number">0</span>;</span><br><span class="line">		l = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> params = &#123;</span><br><span class="line">		<span class="string">&quot;IotInstanceId&quot;</span>: <span class="string">&quot;iot-06z00g6fsqfbsgl&quot;</span>,</span><br><span class="line">		<span class="string">&quot;ProductKey&quot;</span>: <span class="string">&quot;gs6cY8aZKGQ&quot;</span>,</span><br><span class="line">		<span class="string">&quot;DeviceName&quot;</span>: <span class="string">&quot;light001&quot;</span>,</span><br><span class="line">		<span class="string">&quot;Items&quot;</span>: <span class="string">&quot;&#123;\&quot;table_lamp:brightness\&quot;:&quot;</span>+b+<span class="string">&quot;,\&quot;table_lamp:lightingtone\&quot;:&quot;</span>+l+<span class="string">&quot;&#125;&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> requestOption = &#123;</span><br><span class="line">		<span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">let</span> res = client.<span class="title function_">request</span>(<span class="string">&#x27;SetDeviceProperty&#x27;</span>, params, requestOption).<span class="title function_">then</span>(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// console.log(JSON.stringify(result));</span></span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;, <span class="function">(<span class="params">ex</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// console.log(ex);</span></span><br><span class="line">		<span class="keyword">return</span> ex;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="我的台灯APP"><a href="#我的台灯APP" class="headerlink" title="我的台灯APP"></a>我的台灯APP</h4><p>APP基于vue,使用uni-app生成。</p>
+<p>图示如下。</p>
+<p><img src="https://external-link.sunan.me/blog/220114/2b2Hg6CgeF.jpg?imageslim" alt="mark"></p>
+<p>关键代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;bg&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;tittle&quot;</span>&gt;</span>我的台灯▾<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;card-left&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">				<span class="tag">&lt;<span class="name">uni-card</span> <span class="attr">title</span>=<span class="string">&quot;灯光亮度&quot;</span> <span class="attr">is-shadow</span>=<span class="string">true</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">					<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;icon-button&quot;</span> <span class="attr">v-on:click</span>=<span class="string">&quot;switchBrightness()&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">						<span class="tag">&lt;<span class="name">uni-icons</span> <span class="attr">type</span>=<span class="string">&quot;loop&quot;</span> <span class="attr">size</span>=<span class="string">&quot;30&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">uni-icons</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">					<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">				<span class="tag">&lt;/<span class="name">uni-card</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;card-right&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">				<span class="tag">&lt;<span class="name">uni-card</span> <span class="attr">title</span>=<span class="string">&quot;灯光强度&quot;</span> <span class="attr">is-shadow</span>=<span class="string">true</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">					<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;icon-button&quot;</span> <span class="attr">v-on:click</span>=<span class="string">&quot;switchLightingtone()&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">						<span class="tag">&lt;<span class="name">uni-icons</span> <span class="attr">type</span>=<span class="string">&quot;loop&quot;</span> <span class="attr">size</span>=<span class="string">&quot;30&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">uni-icons</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">					<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">				<span class="tag">&lt;/<span class="name">uni-card</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="attr">onLoad</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;index page load&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="comment">// this.switch();</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="attr">isB</span>: <span class="number">1</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="attr">switch</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="comment">// callback方式</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				uniCloud.<span class="title function_">callFunction</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					<span class="attr">name</span>: <span class="string">&#x27;switch&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					<span class="attr">data</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="string">&quot;isBrightness&quot;</span>: <span class="variable language_">this</span>.<span class="property">isB</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					<span class="title function_">success</span>(<span class="params">res</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="keyword">let</span> isSuccess = res.<span class="property">success</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					<span class="title function_">fail</span>(<span class="params">err</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				&#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="attr">switchBrightness</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="variable language_">this</span>.<span class="property">isB</span> = <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="variable language_">this</span>.<span class="title function_">switch</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="attr">switchLightingtone</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="variable language_">this</span>.<span class="property">isB</span> = <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="variable language_">this</span>.<span class="title function_">switch</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	<span class="selector-class">.bg</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">../../static/bg.jpg</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">background-size</span>: cover;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">opacity</span>: <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">z-index</span>: -<span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">position</span>: fixed;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	<span class="selector-class">.container</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">padding</span>: <span class="number">0</span> <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	<span class="selector-class">.tittle</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">font-size</span>: <span class="number">22px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">padding-left</span>: <span class="number">15px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">padding-bottom</span>: <span class="number">20px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	<span class="selector-class">.card-left</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">width</span>: <span class="number">45%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">float</span>: left;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	<span class="selector-class">.card-right</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">width</span>: <span class="number">45%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">float</span>: right;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	<span class="selector-class">.icon-button</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">margin</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">		<span class="attribute">text-align</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="转发订阅消息脚本"><a href="#转发订阅消息脚本" class="headerlink" title="转发订阅消息脚本"></a>转发订阅消息脚本</h4><p>因为我的手机是Redmi k30 pro, 所以想要接入小爱同学，但是小米的IOT开发者只支持企业入驻。所以只能借助巴法云物联网平台，然后使用脚本做消息转发来接入小爱同学。</p>
+<p>脚本使用python编写，共有两个线程，子线程用来维持心跳。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> alibabacloud_iot20180120.client <span class="keyword">import</span> Client <span class="keyword">as</span> Iot20180120Client</span><br><span class="line"><span class="keyword">from</span> alibabacloud_tea_openapi <span class="keyword">import</span> models <span class="keyword">as</span> open_api_models</span><br><span class="line"><span class="keyword">from</span> alibabacloud_iot20180120 <span class="keyword">import</span> models <span class="keyword">as</span> iot_20180120_models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 心跳</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Heartbeat</span>(threading.Thread):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, s</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.s = s</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">30</span>)</span><br><span class="line">            self.s.send(<span class="string">&quot;ping\r\n&quot;</span>.encode())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run</span>():</span><br><span class="line">    address = (<span class="string">&#x27;bemfa.com&#x27;</span>, <span class="number">8344</span>)  <span class="comment"># 服务端地址和端口</span></span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        s.connect(address)  <span class="comment"># 尝试连接服务端</span></span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;[!] Server not found ot not open&#x27;</span>)</span><br><span class="line">        sys.exit()</span><br><span class="line">    s.send(<span class="string">&quot;cmd=1&amp;uid=721a5***********************&amp;topic=light002\r\n&quot;</span>.encode())</span><br><span class="line">    data = s.recv(<span class="number">1024</span>)</span><br><span class="line">    data = data.decode()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;[Recieved]&#x27;</span>, data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 启动心跳子线程</span></span><br><span class="line">    heartbeat = Heartbeat(s)</span><br><span class="line">    heartbeat.start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = s.recv(<span class="number">1024</span>)</span><br><span class="line">        data = data.decode()</span><br><span class="line">        data = data.replace(<span class="string">&quot;\r\n&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        data_dict = parse.parse_qs(data)</span><br><span class="line">        <span class="comment"># print(&#x27;[Recieved]&#x27;, data_dict)</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            msg = data_dict[<span class="string">&quot;msg&quot;</span>]</span><br><span class="line">            <span class="keyword">if</span> msg[<span class="number">0</span>] == <span class="string">&quot;on&quot;</span>:</span><br><span class="line">                AliyunIOT.main(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">if</span> msg[<span class="number">0</span>] == <span class="string">&quot;off&quot;</span>:</span><br><span class="line">                AliyunIOT.main(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="comment"># data</span></span><br><span class="line">    <span class="comment"># s.close()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AliyunIOT</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">create_client</span>():</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        使用AK&amp;SK初始化账号Client</span></span><br><span class="line"><span class="string">        @param access_key_id:</span></span><br><span class="line"><span class="string">        @param access_key_secret:</span></span><br><span class="line"><span class="string">        @return: Client</span></span><br><span class="line"><span class="string">        @throws Exception</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        config = open_api_models.Config(</span><br><span class="line">            <span class="comment"># 您的AccessKey ID,</span></span><br><span class="line">            access_key_id=<span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="comment"># 您的AccessKey Secret,</span></span><br><span class="line">            access_key_secret=<span class="string">&quot;&quot;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># 访问的域名</span></span><br><span class="line">        config.endpoint = <span class="string">f&#x27;iot.cn-shanghai.aliyuncs.com&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> Iot20180120Client(config)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">main</span>(<span class="params">b, l</span>):</span><br><span class="line">        client = AliyunIOT.create_client()</span><br><span class="line">        set_device_property_request = iot_20180120_models.SetDevicePropertyRequest(</span><br><span class="line">            product_key=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            device_name=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            iot_instance_id=<span class="string">&#x27;iot-06z00g6fsqfbsgl&#x27;</span>,</span><br><span class="line">            items=<span class="string">&quot;&#123;\&quot;table_lamp:brightness\&quot;:&quot;</span> + <span class="built_in">str</span>(b) + <span class="string">&quot;,\&quot;table_lamp:lightingtone\&quot;:&quot;</span> + <span class="built_in">str</span>(l) + <span class="string">&quot;&#125;&quot;</span></span><br><span class="line">        )</span><br><span class="line">        res = client.set_device_property(set_device_property_request)</span><br><span class="line">        <span class="comment"># print(res)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    run()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="巴法云物联网平台"><a href="#巴法云物联网平台" class="headerlink" title="巴法云物联网平台"></a>巴法云物联网平台</h4><ol>
+<li>新建TCP创客云主题，如下。</li>
+</ol>
+<p><img src="https://external-link.sunan.me/blog/220114/9593ld4g6H.png?imageslim" alt="mark"></p>
+<p>命名要求：</p>
+<blockquote>
+<p>当主题名字后三位是001时为插座设备。<br>当主题名字后三位是002时为灯泡设备。<br>当主题名字后三位是003时为风扇设备。<br>当主题名字后三位是004时为传感器设备。<br>当主题名字后三位是005时为空调设备。<br>当主题名字后三位是006时为开关设备。<br>当主题名字后三位是009时为窗帘设备。</p>
+</blockquote>
+<h4 id="小爱同学绑定巴法云"><a href="#小爱同学绑定巴法云" class="headerlink" title="小爱同学绑定巴法云"></a>小爱同学绑定巴法云</h4><p>绑定步骤。</p>
+<p>打开米家–&gt;我的–&gt;其他平台设备–&gt;巴法云–&gt;绑定账户。</p>
+<h4 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h4><p><img src="https://external-link.sunan.me/blog/220114/HGDaLAbBjB.mp4" alt="mark"></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">基于esp8266的小爱同学和app控制的小台灯</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Mr.Su</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2022-01-14 21:55:14</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2022-0114-基于esp8266的声控和app控制的小台灯/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023-0728-Embarking%20on%20a%20New%20Journey/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Embarking on a New Journey</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2021-0504-%E5%9F%BA%E4%BA%8Epytorch%E7%9A%84Mnist%E6%89%8B%E5%86%99%E4%BD%93%E8%AF%86%E5%88%AB/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">基于pytorch的Mnist手写体识别</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#esp8266-%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">esp8266 代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91IOT%E5%B9%B3%E5%8F%B0"><span class="nav-number">3.</span> <span class="nav-text">阿里云IOT平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E4%BA%91%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">阿里云云函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E5%8F%B0%E7%81%AFAPP"><span class="nav-number">5.</span> <span class="nav-text">我的台灯APP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF%E8%84%9A%E6%9C%AC"><span class="nav-number">6.</span> <span class="nav-text">转发订阅消息脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%B4%E6%B3%95%E4%BA%91%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0"><span class="nav-number">7.</span> <span class="nav-text">巴法云物联网平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6%E7%BB%91%E5%AE%9A%E5%B7%B4%E6%B3%95%E4%BA%91"><span class="nav-number">8.</span> <span class="nav-text">小爱同学绑定巴法云</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91"><span class="nav-number">9.</span> <span class="nav-text">演示视频</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Mr.Su</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    鲁ICP备15022835号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

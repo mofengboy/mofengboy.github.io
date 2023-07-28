@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Mr.Su">
+    
+    <title>
+        
+            Latex实现表格并排 |
+        
+        Sunan&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/null">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"sunan.me","root":"/","language":"en"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+               Sunan&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Latex实现表格并排</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Mr.Su</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2020-04-24 12:24:16</span>
+        <span class="mobile">2020-04-24 12:24</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2020-04-24 12:26:12</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/tools/">tools</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Latex/">Latex</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>笔记。</p>
+<p>Latex 表格并排。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;minipage&#125;&#123;<span class="keyword">\textwidth</span>&#125;</span><br><span class="line">  <span class="keyword">\begin</span>&#123;minipage&#125;[h]&#123;0.5<span class="keyword">\textwidth</span>&#125;</span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\begin</span>&#123;threeparttable&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tabular&#125;&#123;l|ll|l&#125;</span><br><span class="line">        <span class="keyword">\hline</span></span><br><span class="line">                 <span class="built_in">&amp;</span> OFF   <span class="built_in">&amp;</span> NOT   <span class="built_in">&amp;</span> TOTAL <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">        OLIDv1.0 <span class="built_in">&amp;</span> 4400  <span class="built_in">&amp;</span> 8840  <span class="built_in">&amp;</span> 859   <span class="keyword">\\</span></span><br><span class="line">        EXPAND   <span class="built_in">&amp;</span> 27038 <span class="built_in">&amp;</span> 27107 <span class="built_in">&amp;</span> 54145 <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tabular&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tablenotes&#125;</span><br><span class="line">        <span class="keyword">\footnotesize</span></span><br><span class="line">        <span class="keyword">\item</span>[] The  <span class="comment">%此处加入注释*信息</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tablenotes&#125;</span><br><span class="line">    <span class="keyword">\end</span>&#123;threeparttable&#125;</span><br><span class="line">    <span class="keyword">\makeatletter</span><span class="keyword">\def</span><span class="keyword">\@captype</span>&#123;table&#125;<span class="keyword">\makeatother</span><span class="keyword">\caption</span>&#123;Data set:Task A&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;Data set:Task A&#125;</span><br><span class="line">  <span class="keyword">\end</span>&#123;minipage&#125;</span><br><span class="line">  <span class="keyword">\begin</span>&#123;minipage&#125;[h]&#123;0.5<span class="keyword">\textwidth</span>&#125;</span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\begin</span>&#123;threeparttable&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tabular&#125;&#123;cccc&#125;</span><br><span class="line">        <span class="keyword">\hline</span></span><br><span class="line">        A   <span class="built_in">&amp;</span> B   <span class="built_in">&amp;</span> C   <span class="built_in">&amp;</span> Test <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> TIN <span class="built_in">&amp;</span> IND <span class="built_in">&amp;</span> 580  <span class="keyword">\\</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> TIN <span class="built_in">&amp;</span> OTH <span class="built_in">&amp;</span> 80   <span class="keyword">\\</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> TIN <span class="built_in">&amp;</span> GPR <span class="built_in">&amp;</span> 190  <span class="keyword">\\</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> UNT <span class="built_in">&amp;</span> -   <span class="built_in">&amp;</span> 572  <span class="keyword">\\</span></span><br><span class="line">        NOT <span class="built_in">&amp;</span> -   <span class="built_in">&amp;</span> -   <span class="built_in">&amp;</span> 2807 <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">        ALL <span class="built_in">&amp;</span>     <span class="built_in">&amp;</span>     <span class="built_in">&amp;</span> 3887 <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tabular&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tablenotes&#125;</span><br><span class="line">        <span class="keyword">\footnotesize</span></span><br><span class="line">        <span class="keyword">\item</span>[]  <span class="comment">%此处加入注释*信息</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tablenotes&#125;</span><br><span class="line">    <span class="keyword">\end</span>&#123;threeparttable&#125;</span><br><span class="line">    <span class="keyword">\makeatletter</span><span class="keyword">\def</span><span class="keyword">\@captype</span>&#123;table&#125;<span class="keyword">\makeatother</span><span class="keyword">\caption</span>&#123;Dataset statistics&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;Dataset statistics&#125;</span><br><span class="line">  <span class="keyword">\end</span>&#123;minipage&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;minipage&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">Latex实现表格并排</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Mr.Su</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2020-04-24 12:24:16</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2020-0424-Latex实现表格并排/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Latex/">#Latex</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2020-0612-%E5%8A%A8%E7%89%A9%E8%AF%86%E5%88%AB%E4%B8%93%E5%AE%B6%E7%B3%BB%E7%BB%9Fweb%E7%89%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">动物识别专家系统web版|人工智能导论</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2020-0413-%E4%B8%93%E4%B8%9A%E5%AF%BC%E8%AE%BA%E8%AF%BE%E4%B8%8A%E7%9A%84%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">专业导论课上的大学阶段web项目开发经验分享</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Mr.Su</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    鲁ICP备15022835号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

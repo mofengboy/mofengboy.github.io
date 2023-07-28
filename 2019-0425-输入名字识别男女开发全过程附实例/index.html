@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Mr.Su">
+    
+    <title>
+        
+            输入名字识别男女开发全过程附实例 |
+        
+        Sunan&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/null">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"sunan.me","root":"/","language":"en"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+               Sunan&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">输入名字识别男女开发全过程附实例</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Mr.Su</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2019-04-25 12:00:00</span>
+        <span class="mobile">2019-04-25 12:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2020-03-21 16:15:56</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/">贝叶斯</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h3 id="简述："><a href="#简述：" class="headerlink" title="简述："></a>简述：</h3><p>基于概率论的分类方法 <strong>:朴素贝叶斯</strong></p>
+<p>通过分析7000个人的名字，分别计算男女名字中含有某个的概率，</p>
+<p>如果男孩子名字的概率大于女孩子的，则判断结果为男孩子。</p>
+<span id="more"></span>
+
+<h3 id="算法部分"><a href="#算法部分" class="headerlink" title="算法部分"></a>算法部分</h3><h4 id="从数据库中读取名字和性别"><a href="#从数据库中读取名字和性别" class="headerlink" title="从数据库中读取名字和性别"></a>从数据库中读取名字和性别</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从数据库中读取名字和性别</span></span><br><span class="line"><span class="comment"># 训练集数据为7000</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">input_name</span>():</span><br><span class="line">    <span class="comment"># 连接数据库</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, db=<span class="string">&#x27;person_name&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor()</span><br><span class="line">    <span class="comment"># 读取数据</span></span><br><span class="line">    cursor.execute(<span class="string">&quot;SELECT * FROM student&quot;</span>)</span><br><span class="line">    names_data = cursor.fetchmany(<span class="number">7000</span>)</span><br><span class="line">    <span class="comment"># 分类男女数据</span></span><br><span class="line">    boy_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    girl_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> names_data:</span><br><span class="line">        <span class="comment"># 去除姓分别拼接所有名字为字符串</span></span><br><span class="line">        <span class="keyword">if</span> i[<span class="number">2</span>] == <span class="string">&#x27;男&#x27;</span>:</span><br><span class="line">            boy_str = boy_str + i[<span class="number">1</span>][<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            girl_str = girl_str + i[<span class="number">1</span>][<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">    <span class="comment"># 保存为字典类型并返回</span></span><br><span class="line">    sex_data = &#123;<span class="string">&#x27;男&#x27;</span>: boy_str,</span><br><span class="line">                <span class="string">&#x27;女&#x27;</span>: girl_str</span><br><span class="line">                &#125;</span><br><span class="line">    <span class="comment"># 提交，不然无法保存新建或者修改的数据</span></span><br><span class="line">    conn.commit()</span><br><span class="line">    <span class="comment"># 关闭游标</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    <span class="comment"># 关闭连接</span></span><br><span class="line">    conn.close()</span><br><span class="line">    <span class="keyword">return</span> sex_data</span><br></pre></td></tr></table></figure>
+<h4 id="计算字符概率"><a href="#计算字符概率" class="headerlink" title="计算字符概率"></a>计算字符概率</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算字符概率</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">probability</span>(<span class="params">words</span>):</span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="comment"># 统计出现的字符个数</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> words:</span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">in</span> d:</span><br><span class="line">            d[x] = d[x] + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            d[x] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># 计算字符出现概率</span></span><br><span class="line">    word_probability = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> d:</span><br><span class="line">        word_probability[i] = d[i] / <span class="number">7000</span></span><br><span class="line">    <span class="keyword">return</span> word_probability</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="概率数据存入数据库"><a href="#概率数据存入数据库" class="headerlink" title="概率数据存入数据库"></a>概率数据存入数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 概率数据存入数据库</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_mysql</span>(<span class="params">word_data, sex</span>):</span><br><span class="line">    <span class="comment"># 连接数据库</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, db=<span class="string">&#x27;person_name&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor()</span><br><span class="line">    <span class="keyword">if</span> sex == <span class="string">&#x27;男&#x27;</span>:</span><br><span class="line">        <span class="comment"># 循环存入数据</span></span><br><span class="line">        sql = <span class="string">&quot;INSERT INTO boy (word,probability) VALUES (%s,%s)&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> word_data:</span><br><span class="line">            cursor.execute(sql, (i, word_data[i]))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 循环存入数据</span></span><br><span class="line">        sql = <span class="string">&quot;INSERT INTO girl (word,probability) VALUES (%s,%s)&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> word_data:</span><br><span class="line">            cursor.execute(sql, (i, word_data[i]))</span><br><span class="line">    <span class="comment"># 提交，不然无法保存新建或者修改的数据</span></span><br><span class="line">    conn.commit()</span><br><span class="line">    <span class="comment"># 关闭游标</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    <span class="comment"># 关闭连接</span></span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="训练部分完整代码"><a href="#训练部分完整代码" class="headerlink" title="训练部分完整代码"></a>训练部分完整代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 计算字符概率</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">probability</span>(<span class="params">words</span>):</span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="comment"># 统计出现的字符个数</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> words:</span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">in</span> d:</span><br><span class="line">            d[x] = d[x] + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            d[x] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># 计算字符出现概率</span></span><br><span class="line">    word_probability = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> d:</span><br><span class="line">        word_probability[i] = d[i] / <span class="number">7000</span></span><br><span class="line">    <span class="keyword">return</span> word_probability</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 从数据库中读取名字和性别</span></span><br><span class="line"><span class="comment"># 训练集数据为7000</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">input_name</span>():</span><br><span class="line">    <span class="comment"># 连接数据库</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, db=<span class="string">&#x27;person_name&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor()</span><br><span class="line">    <span class="comment"># 读取数据</span></span><br><span class="line">    cursor.execute(<span class="string">&quot;SELECT * FROM student&quot;</span>)</span><br><span class="line">    names_data = cursor.fetchmany(<span class="number">7000</span>)</span><br><span class="line">    <span class="comment"># 分类男女数据</span></span><br><span class="line">    boy_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    girl_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> names_data:</span><br><span class="line">        <span class="comment"># 去除姓分别拼接所有名字为字符串</span></span><br><span class="line">        <span class="keyword">if</span> i[<span class="number">2</span>] == <span class="string">&#x27;男&#x27;</span>:</span><br><span class="line">            boy_str = boy_str + i[<span class="number">1</span>][<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            girl_str = girl_str + i[<span class="number">1</span>][<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">    <span class="comment"># 保存为字典类型并返回</span></span><br><span class="line">    sex_data = &#123;<span class="string">&#x27;男&#x27;</span>: boy_str,</span><br><span class="line">                <span class="string">&#x27;女&#x27;</span>: girl_str</span><br><span class="line">                &#125;</span><br><span class="line">    <span class="comment"># 提交，不然无法保存新建或者修改的数据</span></span><br><span class="line">    conn.commit()</span><br><span class="line">    <span class="comment"># 关闭游标</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    <span class="comment"># 关闭连接</span></span><br><span class="line">    conn.close()</span><br><span class="line">    <span class="keyword">return</span> sex_data</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 概率数据存入数据库</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_mysql</span>(<span class="params">word_data, sex</span>):</span><br><span class="line">    <span class="comment"># 连接数据库</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, db=<span class="string">&#x27;person_name&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor()</span><br><span class="line">    <span class="keyword">if</span> sex == <span class="string">&#x27;男&#x27;</span>:</span><br><span class="line">        <span class="comment"># 循环存入数据</span></span><br><span class="line">        sql = <span class="string">&quot;INSERT INTO boy (word,probability) VALUES (%s,%s)&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> word_data:</span><br><span class="line">            cursor.execute(sql, (i, word_data[i]))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 循环存入数据</span></span><br><span class="line">        sql = <span class="string">&quot;INSERT INTO girl (word,probability) VALUES (%s,%s)&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> word_data:</span><br><span class="line">            cursor.execute(sql, (i, word_data[i]))</span><br><span class="line">    <span class="comment"># 提交，不然无法保存新建或者修改的数据</span></span><br><span class="line">    conn.commit()</span><br><span class="line">    <span class="comment"># 关闭游标</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    <span class="comment"># 关闭连接</span></span><br><span class="line">    conn.close()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 获取训练数据集</span></span><br><span class="line">    name_data = input_name()</span><br><span class="line">    <span class="comment"># 统计男孩名字名字出现字的概率</span></span><br><span class="line">    boy_probability = probability(name_data[<span class="string">&#x27;男&#x27;</span>])</span><br><span class="line">    girl_probability = probability(name_data[<span class="string">&#x27;女&#x27;</span>])</span><br><span class="line">    <span class="comment"># 存入数据库</span></span><br><span class="line">    save_mysql(boy_probability, <span class="string">&#x27;男&#x27;</span>)</span><br><span class="line">    save_mysql(girl_probability, <span class="string">&#x27;女&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="应用部分完整代码"><a href="#应用部分完整代码" class="headerlink" title="应用部分完整代码"></a>应用部分完整代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 读取数据库</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">accept_mysql</span>():</span><br><span class="line">    <span class="comment"># 连接数据库</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, db=<span class="string">&#x27;person_name&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    <span class="comment"># 读取男孩数据</span></span><br><span class="line">    boy_cursor = conn.cursor()</span><br><span class="line">    boy_cursor.execute(<span class="string">&quot;SELECT * FROM boy&quot;</span>)</span><br><span class="line">    boy_data = boy_cursor.fetchall()</span><br><span class="line">    <span class="comment"># 读取女孩数据</span></span><br><span class="line">    girl_cursor = conn.cursor()</span><br><span class="line">    girl_cursor.execute(<span class="string">&quot;SELECT * FROM girl&quot;</span>)</span><br><span class="line">    girl_data = girl_cursor.fetchall()</span><br><span class="line">    result = &#123;</span><br><span class="line">        <span class="string">&#x27;男&#x27;</span>: boy_data,</span><br><span class="line">        <span class="string">&#x27;女&#x27;</span>: girl_data</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 分析读取名字</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_name</span>(<span class="params">words, mysql_data_boy, mysql_data_girl</span>):</span><br><span class="line">    boy_word_probability = <span class="number">0</span></span><br><span class="line">    girl_word_probability = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> words:</span><br><span class="line">        <span class="comment"># 男孩</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(mysql_data_boy)):</span><br><span class="line">            <span class="keyword">if</span> x == mysql_data_boy[i][<span class="number">1</span>]:</span><br><span class="line">                <span class="comment"># 如果名字是两个字以上，概率相加</span></span><br><span class="line">                boy_word_probability = boy_word_probability + mysql_data_boy[i][<span class="number">2</span>]</span><br><span class="line">            <span class="comment"># 女孩</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(mysql_data_girl)):</span><br><span class="line">            <span class="keyword">if</span> x == mysql_data_girl[i][<span class="number">1</span>]:</span><br><span class="line">                <span class="comment"># 如果名字是两个字以上，概率相加</span></span><br><span class="line">                girl_word_probability = girl_word_probability + mysql_data_girl[i][<span class="number">2</span>]</span><br><span class="line">    result = &#123;</span><br><span class="line">        <span class="string">&#x27;男&#x27;</span>: boy_word_probability,</span><br><span class="line">        <span class="string">&#x27;女&#x27;</span>: girl_word_probability</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    raw_name = <span class="built_in">input</span>()</span><br><span class="line">    name = raw_name[<span class="number">1</span>:]</span><br><span class="line">    <span class="comment"># 获取数据库数据</span></span><br><span class="line">    mysql_data_boy = accept_mysql()[<span class="string">&#x27;男&#x27;</span>]</span><br><span class="line">    mysql_data_girl = accept_mysql()[<span class="string">&#x27;女&#x27;</span>]</span><br><span class="line">    <span class="comment"># 分析名字</span></span><br><span class="line">    boy_probability = read_name(name, mysql_data_boy, mysql_data_girl)[<span class="string">&#x27;男&#x27;</span>]</span><br><span class="line">    girl_probability = read_name(name, mysql_data_boy, mysql_data_girl)[<span class="string">&#x27;女&#x27;</span>]</span><br><span class="line">    <span class="keyword">if</span> boy_probability &gt; girl_probability:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;男孩子&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> girl_probability &gt; boy_probability:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;女孩子&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> girl_probability == boy_probability:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;不可能！&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p> 项目DEMO地址：<a class="link"   target="_blank" rel="noopener" href="http://boy-girl.netlab.sunan.me/" >http://boy-girl.netlab.sunan.me<i class="fas fa-external-link-alt"></i></a> </p>
+<p><strong>爬虫太多，服务已关闭</strong><br><em>2020.03.21</em></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">输入名字识别男女开发全过程附实例</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Mr.Su</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2019-04-25 12:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2019-0425-输入名字识别男女开发全过程附实例/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/">#贝叶斯</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2019-1013-%E5%88%A9%E7%94%A8Hexo%E5%92%8CGitHub%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">利用Hexo和GitHub搭建独立博客</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2019-0124-%E5%8F%8C%E7%AB%99%E7%82%B9%E4%BA%8C%E7%BA%A7%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AEwordpress%E4%BC%AA%E9%9D%99%E6%80%81/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">双站点二级目录配置wordpress伪静态</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">简述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">算法部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%90%8D%E5%AD%97%E5%92%8C%E6%80%A7%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">从数据库中读取名字和性别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E6%A6%82%E7%8E%87"><span class="nav-number">2.2.</span> <span class="nav-text">计算字符概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.3.</span> <span class="nav-text">概率数据存入数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E9%83%A8%E5%88%86%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">训练部分完整代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E9%83%A8%E5%88%86%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">应用部分完整代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">5.</span> <span class="nav-text">DEMO</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Mr.Su</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    鲁ICP备15022835号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

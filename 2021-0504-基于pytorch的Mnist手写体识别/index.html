@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Mr.Su">
+    
+    <title>
+        
+            基于pytorch的Mnist手写体识别 |
+        
+        Sunan&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/null">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"sunan.me","root":"/","language":"en"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+               Sunan&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">基于pytorch的Mnist手写体识别</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Mr.Su</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2021-05-04 21:55:14</span>
+        <span class="mobile">2021-05-04 21:55</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-07-28 18:41:09</span>
+    </span>
+    
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p><img src="https://external-link.sunan.me/blog/210524/heDke9H3h2.png?imageslim" alt="mark"></p>
+<span id="more"></span>
+
+
+<h2 id="构建自己的数据读写类"><a href="#构建自己的数据读写类" class="headerlink" title="构建自己的数据读写类"></a>构建自己的数据读写类</h2><p>自定义的数据读写类要基于Dataset类构建，并实现其中的三个方法。Dataset类位于torch.utils.data</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>() <span class="comment"># 用来初始化</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">__getitem__</span>() <span class="comment">#用来获取初始化后的每一个数据，接收值是一个索引，应该返回（data,label)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">__len__</span>() <span class="comment"># 获取数据集的大小</span></span><br></pre></td></tr></table></figure>
+
+<p>构建完成后可以使用类似于数组的方式访问，如MyDataset[0]</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MnistDataSet</span>(<span class="title class_ inherited__">Dataset</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, file_path, is_train=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="comment"># 使用scipy读入mat文件数据</span></span><br><span class="line">        mnist_all = sio.loadmat(file_path)</span><br><span class="line">        train_raw = []</span><br><span class="line">        test_raw = []</span><br><span class="line">        <span class="comment"># 依次读入数据集0-9</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">            train_temp = mnist_all[<span class="string">&quot;train&quot;</span> + <span class="built_in">str</span>(i)]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> train_temp:</span><br><span class="line">                j = np.array(j) / <span class="number">225.0</span></span><br><span class="line">                train_raw.append([j, i])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">            test_temp = mnist_all[<span class="string">&quot;test&quot;</span> + <span class="built_in">str</span>(i)]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> test_temp:</span><br><span class="line">                j = np.array(j) / <span class="number">225.0</span></span><br><span class="line">                test_raw.append([j, i])</span><br><span class="line"></span><br><span class="line">        self.trainDataSet = train_raw</span><br><span class="line">        self.testDataSet = test_raw</span><br><span class="line">        self.is_train = is_train</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="keyword">if</span> self.is_train:</span><br><span class="line">            dataSet = self.trainDataSet</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dataSet = self.testDataSet</span><br><span class="line">        img = dataSet[index][<span class="number">0</span>]</span><br><span class="line">        labelArr = np.eye(<span class="number">10</span>)</span><br><span class="line">        label = labelArr[dataSet[index][<span class="number">1</span>]]</span><br><span class="line">        <span class="keyword">return</span> img, label</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.is_train:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">len</span>(self.trainDataSet)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">len</span>(self.testDataSet)</span><br></pre></td></tr></table></figure>
+
+<p>接下来使用迭代器加载数据集，如下。</p>
+<p>DataLoader位于torch.utils.data.dataloader</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">trainSet = MnistDataSet(file_path=<span class="string">&quot;./data/mnist_all.mat&quot;</span>, is_train=<span class="literal">True</span>)</span><br><span class="line">trainDataLoader = DataLoader(trainSet, batch_size=batch_size, shuffle=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="构建网络"><a href="#构建网络" class="headerlink" title="构建网络"></a>构建网络</h2><p>网络结构为（卷积层+池化层+激活层）X2+（全连接层+激活层）X3</p>
+<p>损失函数为交叉熵损失函数。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CnnNet</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        self.mp = nn.MaxPool2d(kernel_size=(<span class="number">2</span>, <span class="number">2</span>), stride=<span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">1600</span>, <span class="number">1024</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">1024</span>, <span class="number">1024</span>)</span><br><span class="line">        self.fc3 = nn.Linear(<span class="number">1024</span>, <span class="number">128</span>)</span><br><span class="line">        self.fc4 = nn.Linear(<span class="number">128</span>, <span class="number">10</span>)</span><br><span class="line">        self.relu = nn.ReLU()</span><br><span class="line">        self.softmax = nn.Softmax(dim=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = x.reshape(-<span class="number">1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">        y = self.conv1(x)</span><br><span class="line">        y = self.relu(y)</span><br><span class="line">        y = self.mp(y)</span><br><span class="line">        y = self.conv2(y)</span><br><span class="line">        y = self.relu(y)</span><br><span class="line">        y = self.mp(y)</span><br><span class="line"></span><br><span class="line">        y = y.reshape(-<span class="number">1</span>, <span class="number">1600</span>)</span><br><span class="line">        y = self.relu(self.fc1(y))</span><br><span class="line">        y = self.relu(self.fc2(y))</span><br><span class="line">        y = self.relu(self.fc3(y))</span><br><span class="line">        y = self.fc4(y)</span><br><span class="line">        y = self.softmax(y)</span><br><span class="line">        <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
+
+<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">epoch, device, batch_size, lr, save_path</span>):</span><br><span class="line">    model = CnnNet()</span><br><span class="line">    model.train()</span><br><span class="line">    <span class="comment"># 读取数据</span></span><br><span class="line">    trainSet = MnistDataSet(file_path=<span class="string">&quot;./data/mnist_all.mat&quot;</span>, is_train=<span class="literal">True</span>)</span><br><span class="line">    trainDataLoader = DataLoader(trainSet, batch_size=batch_size, shuffle=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 定义交叉熵损失</span></span><br><span class="line">    loss_func = torch.nn.CrossEntropyLoss()</span><br><span class="line">    <span class="comment"># 定义Adam优化器</span></span><br><span class="line">    optimizer = optim.Adam(model.parameters(), lr=lr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(epoch):</span><br><span class="line">        <span class="keyword">for</span> i, (data, target) <span class="keyword">in</span> <span class="built_in">enumerate</span>(trainDataLoader):</span><br><span class="line">            data, target = data.to(device).<span class="built_in">float</span>(), target.to(device)</span><br><span class="line">            out = model(data)</span><br><span class="line"></span><br><span class="line">            p = torch.argmax(out, dim=<span class="number">1</span>)</span><br><span class="line">            y = torch.argmax(target, dim=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            loss = loss_func(out, y)</span><br><span class="line">            <span class="comment"># 梯度清零</span></span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">            loss.backward()</span><br><span class="line">            <span class="comment"># 更新参数</span></span><br><span class="line">            optimizer.step()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># 准确率计算</span></span><br><span class="line">                train_correct = (p == y).<span class="built_in">sum</span>() / batch_size</span><br><span class="line"></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Epoch为&quot;</span> + <span class="built_in">str</span>(e))</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;第&quot;</span> + <span class="built_in">str</span>(e * <span class="built_in">len</span>(trainDataLoader) + i) + <span class="string">&quot;次训练损失为&quot;</span> + <span class="built_in">str</span>(loss))</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;第&quot;</span> + <span class="built_in">str</span>(e * <span class="built_in">len</span>(trainDataLoader) + i) + <span class="string">&quot;正确率为&quot;</span> + <span class="built_in">str</span>(train_correct))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模型保存</span></span><br><span class="line">    torch.save(model, save_path)</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证过程"><a href="#验证过程" class="headerlink" title="验证过程"></a>验证过程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dev</span>(<span class="params">device, batch_size, model_path</span>):</span><br><span class="line">    model = torch.load(model_path)</span><br><span class="line">    trainSet = MnistDataSet(file_path=<span class="string">&quot;./data/mnist_all.mat&quot;</span>, is_train=<span class="literal">False</span>)</span><br><span class="line">    trainDataLoader = DataLoader(trainSet, batch_size=batch_size, shuffle=<span class="literal">False</span>)</span><br><span class="line">    train_correct = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, (data, target) <span class="keyword">in</span> <span class="built_in">enumerate</span>(trainDataLoader):</span><br><span class="line">        data, target = data.to(device).<span class="built_in">float</span>(), target.to(device)</span><br><span class="line">        out = model(data)</span><br><span class="line"></span><br><span class="line">        p = torch.argmax(out, dim=<span class="number">1</span>)</span><br><span class="line">        y = torch.argmax(target, dim=<span class="number">1</span>)</span><br><span class="line">        train_correct += (p == y).<span class="built_in">sum</span>()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;验证集正确率为&quot;</span> + <span class="built_in">str</span>(train_correct / (<span class="built_in">len</span>(trainDataLoader) * batch_size)))</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    epoch = <span class="number">15</span></span><br><span class="line">    batch_size = <span class="number">128</span></span><br><span class="line">    lr = <span class="number">0.001</span></span><br><span class="line">    device = torch.device(<span class="string">&quot;cpu&quot;</span>)</span><br><span class="line">    train(epoch, device, batch_size, lr, save_path=<span class="string">&quot;model2.pkl&quot;</span>)</span><br><span class="line">    dev(<span class="string">&quot;cpu&quot;</span>, <span class="number">1024</span>, <span class="string">&quot;model2.pkl&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://external-link.sunan.me/blog/210524/Lc2eelHaA7.png?imageslim" alt="mark"></p>
+<p><img src="https://external-link.sunan.me/blog/210524/550BdLEeK0.png?imageslim" alt="mark"></p>
+<p>验证集正确率为：0.9612</p>
+<h2 id="TensorBoard-可视化"><a href="#TensorBoard-可视化" class="headerlink" title="TensorBoard 可视化"></a>TensorBoard 可视化</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">writer = SummaryWriter(<span class="string">&#x27;./log&#x27;</span>) <span class="comment"># 用于指定log保存位置，后续可视化的数据来源</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">writer.add_scalar(<span class="string">&quot;Loss&quot;</span>, loss, e * <span class="built_in">len</span>(trainDataLoader) + i) <span class="comment"># 绘制曲线图</span></span><br></pre></td></tr></table></figure>
+
+<p>add_scalar的参数如下：</p>
+<ul>
+<li>tag (string)：数据标识符</li>
+<li>scalar_value (float or string&#x2F;blobname)：要保存的数值</li>
+<li>global_step (int)：全局步值</li>
+<li>walltime (float)：可选参数，用于记录发生的时间，默认为 time.time()</li>
+</ul>
+<p>启动可视化网页：</p>
+<p>–logdir 保存的文件夹位置</p>
+<p>–port 端口号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir ./log --port 9000</span><br></pre></td></tr></table></figure>
+
+<h2 id="所有代码"><a href="#所有代码" class="headerlink" title="所有代码"></a>所有代码</h2><p>这次不传Github了，所有的代码都在这里。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> scipy.io <span class="keyword">as</span> sio</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> optim</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">from</span> torch.utils.data.dataloader <span class="keyword">import</span> DataLoader</span><br><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MnistDataSet</span>(<span class="title class_ inherited__">Dataset</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, file_path, is_train=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="comment"># 使用scipy读入mat文件数据</span></span><br><span class="line">        mnist_all = sio.loadmat(file_path)</span><br><span class="line">        train_raw = []</span><br><span class="line">        test_raw = []</span><br><span class="line">        <span class="comment"># 依次读入数据集0-9</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">            train_temp = mnist_all[<span class="string">&quot;train&quot;</span> + <span class="built_in">str</span>(i)]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> train_temp:</span><br><span class="line">                j = np.array(j) / <span class="number">225.0</span></span><br><span class="line">                train_raw.append([j, i])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">            test_temp = mnist_all[<span class="string">&quot;test&quot;</span> + <span class="built_in">str</span>(i)]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> test_temp:</span><br><span class="line">                j = np.array(j) / <span class="number">225.0</span></span><br><span class="line">                test_raw.append([j, i])</span><br><span class="line"></span><br><span class="line">        self.trainDataSet = train_raw</span><br><span class="line">        self.testDataSet = test_raw</span><br><span class="line">        self.is_train = is_train</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="keyword">if</span> self.is_train:</span><br><span class="line">            dataSet = self.trainDataSet</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dataSet = self.testDataSet</span><br><span class="line">        img = dataSet[index][<span class="number">0</span>]</span><br><span class="line">        labelArr = np.eye(<span class="number">10</span>)</span><br><span class="line">        label = labelArr[dataSet[index][<span class="number">1</span>]]</span><br><span class="line">        <span class="keyword">return</span> img, label</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.is_train:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">len</span>(self.trainDataSet)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">len</span>(self.testDataSet)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CnnNet</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        self.mp = nn.MaxPool2d(kernel_size=(<span class="number">2</span>, <span class="number">2</span>), stride=<span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">1600</span>, <span class="number">1024</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">1024</span>, <span class="number">1024</span>)</span><br><span class="line">        self.fc3 = nn.Linear(<span class="number">1024</span>, <span class="number">128</span>)</span><br><span class="line">        self.fc4 = nn.Linear(<span class="number">128</span>, <span class="number">10</span>)</span><br><span class="line">        self.relu = nn.ReLU()</span><br><span class="line">        self.softmax = nn.Softmax(dim=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = x.reshape(-<span class="number">1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">        y = self.conv1(x)</span><br><span class="line">        y = self.relu(y)</span><br><span class="line">        y = self.mp(y)</span><br><span class="line">        y = self.conv2(y)</span><br><span class="line">        y = self.relu(y)</span><br><span class="line">        y = self.mp(y)</span><br><span class="line"></span><br><span class="line">        y = y.reshape(-<span class="number">1</span>, <span class="number">1600</span>)</span><br><span class="line">        y = self.relu(self.fc1(y))</span><br><span class="line">        y = self.relu(self.fc2(y))</span><br><span class="line">        y = self.relu(self.fc3(y))</span><br><span class="line">        y = self.fc4(y)</span><br><span class="line">        y = self.softmax(y)</span><br><span class="line">        <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">epoch, device, batch_size, lr, save_path</span>):</span><br><span class="line">    model = CnnNet()</span><br><span class="line">    model.train()</span><br><span class="line">    <span class="comment"># 读取数据</span></span><br><span class="line">    trainSet = MnistDataSet(file_path=<span class="string">&quot;./data/mnist_all.mat&quot;</span>, is_train=<span class="literal">True</span>)</span><br><span class="line">    trainDataLoader = DataLoader(trainSet, batch_size=batch_size, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    writer = SummaryWriter(<span class="string">&#x27;./log&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义交叉熵损失</span></span><br><span class="line">    loss_func = torch.nn.CrossEntropyLoss()</span><br><span class="line">    <span class="comment"># 定义Adam优化器</span></span><br><span class="line">    optimizer = optim.Adam(model.parameters(), lr=lr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(epoch):</span><br><span class="line">        <span class="keyword">for</span> i, (data, target) <span class="keyword">in</span> <span class="built_in">enumerate</span>(trainDataLoader):</span><br><span class="line">            data, target = data.to(device).<span class="built_in">float</span>(), target.to(device)</span><br><span class="line">            out = model(data)</span><br><span class="line"></span><br><span class="line">            p = torch.argmax(out, dim=<span class="number">1</span>)</span><br><span class="line">            y = torch.argmax(target, dim=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            loss = loss_func(out, y)</span><br><span class="line">            <span class="comment"># 梯度清零</span></span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">            loss.backward()</span><br><span class="line">            <span class="comment"># 更新参数</span></span><br><span class="line">            optimizer.step()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># 准确率计算</span></span><br><span class="line">                train_correct = (p == y).<span class="built_in">sum</span>() / batch_size</span><br><span class="line"></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Epoch为&quot;</span> + <span class="built_in">str</span>(e))</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;第&quot;</span> + <span class="built_in">str</span>(e * <span class="built_in">len</span>(trainDataLoader) + i) + <span class="string">&quot;次训练损失为&quot;</span> + <span class="built_in">str</span>(loss))</span><br><span class="line">                writer.add_scalar(<span class="string">&quot;Loss&quot;</span>, loss, e * <span class="built_in">len</span>(trainDataLoader) + i)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;第&quot;</span> + <span class="built_in">str</span>(e * <span class="built_in">len</span>(trainDataLoader) + i) + <span class="string">&quot;正确率为&quot;</span> + <span class="built_in">str</span>(train_correct))</span><br><span class="line">                writer.add_scalar(<span class="string">&quot;Acc&quot;</span>, train_correct, e * <span class="built_in">len</span>(trainDataLoader) + i)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模型保存</span></span><br><span class="line">    torch.save(model, save_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dev</span>(<span class="params">device, batch_size, model_path</span>):</span><br><span class="line">    model = torch.load(model_path)</span><br><span class="line">    trainSet = MnistDataSet(file_path=<span class="string">&quot;./data/mnist_all.mat&quot;</span>, is_train=<span class="literal">False</span>)</span><br><span class="line">    trainDataLoader = DataLoader(trainSet, batch_size=batch_size, shuffle=<span class="literal">False</span>)</span><br><span class="line">    train_correct = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, (data, target) <span class="keyword">in</span> <span class="built_in">enumerate</span>(trainDataLoader):</span><br><span class="line">        data, target = data.to(device).<span class="built_in">float</span>(), target.to(device)</span><br><span class="line">        out = model(data)</span><br><span class="line"></span><br><span class="line">        p = torch.argmax(out, dim=<span class="number">1</span>)</span><br><span class="line">        y = torch.argmax(target, dim=<span class="number">1</span>)</span><br><span class="line">        train_correct += (p == y).<span class="built_in">sum</span>()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;验证集正确率为&quot;</span> + <span class="built_in">str</span>(train_correct / (<span class="built_in">len</span>(trainDataLoader) * batch_size)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    epoch = <span class="number">15</span></span><br><span class="line">    batch_size = <span class="number">128</span></span><br><span class="line">    lr = <span class="number">0.001</span></span><br><span class="line">    device = torch.device(<span class="string">&quot;cpu&quot;</span>)</span><br><span class="line">    train(epoch, device, batch_size, lr, save_path=<span class="string">&quot;model2.pkl&quot;</span>)</span><br><span class="line">    dev(<span class="string">&quot;cpu&quot;</span>, <span class="number">1024</span>, <span class="string">&quot;model2.pkl&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">基于pytorch的Mnist手写体识别</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Mr.Su</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2021-05-04 21:55:14</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2021-0504-基于pytorch的Mnist手写体识别/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022-0114-%E5%9F%BA%E4%BA%8Eesp8266%E7%9A%84%E5%A3%B0%E6%8E%A7%E5%92%8Capp%E6%8E%A7%E5%88%B6%E7%9A%84%E5%B0%8F%E5%8F%B0%E7%81%AF/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">基于esp8266的小爱同学和app控制的小台灯</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2021-0320-%E8%85%BE%E8%AE%AF%E6%9E%81%E5%AE%A2%E6%8A%80%E6%9C%AF%E6%8C%91%E6%88%98%E8%B5%9B%E7%AC%AC%E4%B8%89%E6%9C%9F%E7%A0%81%E4%B8%8A%E7%A7%8D%E6%A0%91Writeup/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">腾讯极客技术挑战赛第三期码上种树Writeup</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">构建自己的数据读写类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">2.</span> <span class="nav-text">构建网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">训练过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">验证过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">5.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorBoard-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">TensorBoard 可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E4%BB%A3%E7%A0%81"><span class="nav-number">7.</span> <span class="nav-text">所有代码</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Mr.Su</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    鲁ICP备15022835号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

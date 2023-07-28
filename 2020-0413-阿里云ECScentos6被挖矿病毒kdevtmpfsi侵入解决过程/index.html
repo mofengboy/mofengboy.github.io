@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Mr.Su">
+    
+    <title>
+        
+            阿里云ECS centos6被挖矿病毒kdevtmpfsi侵入解决过程 |
+        
+        Sunan&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/null">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"sunan.me","root":"/","language":"en"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+               Sunan&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">阿里云ECS centos6被挖矿病毒kdevtmpfsi侵入解决过程</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Mr.Su</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2020-03-30 14:52:16</span>
+        <span class="mobile">2020-03-30 14:52</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2020-04-20 20:15:50</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%BB%91%E5%AE%A2/">黑客</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%8C%96%E7%9F%BF/">挖矿</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/centos6/">centos6</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/shell/">shell</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h3 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h3><p>学校组织的服务器最近HTTP请求很慢，理论上这个服务器的访问量在这个阶段不应该高。</p>
+<p>远程连接服务器之后，发现CPU使用率接近100%，而一个叫kdevtmpfsi进程占用了99%的cpu资源，网上搜索了一下这个进程，发现是个挖矿木马进程。</p>
+<span id="more"></span>
+
+<p><img src="https://pic.downk.cc/item/5e820259504f4bcb04603267.png"></p>
+<h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><h4 id="尝试杀掉进程和删除文件"><a href="#尝试杀掉进程和删除文件" class="headerlink" title="尝试杀掉进程和删除文件"></a>尝试杀掉进程和删除文件</h4><p> <code>ps -ef | grep kdevtmpfsi</code></p>
+<p>发现有两个进程在运行，kill这两个进程并且删掉源文件之后，不到一分钟，这个进程又恢复了，删除的文件也恢复了。</p>
+<p>然后我尝试使用systemctl查看这个进程是否有守护进程。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@iZm5ej3k8*******]# systemctl statu 28477</span><br><span class="line">-bash: systemctl: command not found</span><br></pre></td></tr></table></figure>
+
+<p>查阅资料得知这个服务器的系统是centos6 不支持systemctl命令。</p>
+<p>只能换个方法了。</p>
+<h4 id="使用service代替systemctl"><a href="#使用service代替systemctl" class="headerlink" title="使用service代替systemctl"></a>使用service代替systemctl</h4><p>查到kdevtmpfsi的守护进程为kinsing</p>
+<p><em>附对照表</em></p>
+<blockquote>
+<p>引自： <a class="link"   target="_blank" rel="noopener" href="http://www.361way.com/systemctl/3709.html" >http://www.361way.com/systemctl/3709.html<i class="fas fa-external-link-alt"></i></a> </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>旧指令</th>
+<th>新指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>使某服务自动启动</td>
+<td>chkconfig –level 3 httpd on</td>
+<td>systemctl enable httpd.service</td>
+</tr>
+<tr>
+<td>使某服务不自动启动</td>
+<td>chkconfig –level 3 httpd off</td>
+<td>systemctl disable httpd.service</td>
+</tr>
+<tr>
+<td>检查服务状态</td>
+<td>service httpd status</td>
+<td>systemctl status httpd.service （服务详细信息）systemctl is-active httpd.service （仅显示是否 Active)</td>
+</tr>
+<tr>
+<td>加入自定义服务</td>
+<td>chkconfig –add test</td>
+<td>systemctl  load test.service</td>
+</tr>
+<tr>
+<td>删除服务</td>
+<td>chkconfig –del xxx</td>
+<td>停掉应用，删除相应的配置文件</td>
+</tr>
+<tr>
+<td>显示所有已启动的服务</td>
+<td>chkconfig –list</td>
+<td>systemctl list-units –type&#x3D;service</td>
+</tr>
+<tr>
+<td>启动某服务</td>
+<td>service httpd start</td>
+<td>systemctl start httpd.service</td>
+</tr>
+<tr>
+<td>停止某服务</td>
+<td>service httpd stop</td>
+<td>systemctl stop httpd.service</td>
+</tr>
+<tr>
+<td>重启某服务</td>
+<td>service httpd restart</td>
+<td>systemctl restart httpd.service</td>
+</tr>
+</tbody></table>
+<h4 id="kill守护进程"><a href="#kill守护进程" class="headerlink" title="kill守护进程"></a>kill守护进程</h4><ol>
+<li><p>杀掉守护进程 kinsing ,然后删除文件。</p>
+</li>
+<li><p>杀掉kdevtmpfsi进程，然后删掉文件。</p>
+</li>
+<li><p>全局搜索这两个文件，并删除。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;*kdevtmpfsi*&quot;</span><br><span class="line">find / -name &quot;*kingsing*&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>在我第一次操作过程中，由于只是关掉了进程并没有删除文件，所以又重新运行了。</strong></p>
+<p>5分钟过去了，没事。</p>
+<p>9分钟过去了，没事。</p>
+<p>10分钟后又来了！</p>
+<p>草。。。</p>
+<h4 id="屏蔽IP地址，重置公钥和实例远程登录密码"><a href="#屏蔽IP地址，重置公钥和实例远程登录密码" class="headerlink" title="屏蔽IP地址，重置公钥和实例远程登录密码"></a>屏蔽IP地址，重置公钥和实例远程登录密码</h4><ol>
+<li>发现这两个进程有ip地址一直保持连接，而且ip地址属于俄罗斯。</li>
+</ol>
+<p><img src="https://pic.downk.cc/item/5e81c9c1504f4bcb0431daef.png"></p>
+<p><img src="https://pic.downk.cc/item/5e81c9dc504f4bcb0431ef7e.png"></p>
+<ol start="2">
+<li>重置ssh公钥</li>
+<li>重置实例远程登录密码</li>
+</ol>
+<p>10分钟后又来了！！</p>
+<p>还换了俩IP地址。</p>
+<h4 id="阿里云提交工单"><a href="#阿里云提交工单" class="headerlink" title="阿里云提交工单"></a>阿里云提交工单</h4><p>工单交流了几个小时后，阿里云建议我备份数据，然后初始化磁盘。</p>
+<p>我tm那么多数据，关键还不全是我的。。</p>
+<p><img src="https://pic.downk.cc/item/5e82032b504f4bcb0460f04d.png"></p>
+<h4 id="查看是否有定时任务"><a href="#查看是否有定时任务" class="headerlink" title="查看是否有定时任务"></a>查看是否有定时任务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查询</span></span><br><span class="line">crontab -l</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除</span> </span><br><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+
+<p>没有发现可疑定时任务。</p>
+<h3 id="最终解决办法"><a href="#最终解决办法" class="headerlink" title="最终解决办法"></a>最终解决办法</h3><p>大家不要学我 Σ( ° △ °|||)︴ ，我最后迫不得已选择了用<strong>魔法打败魔法</strong>。</p>
+<p>我写了一个shell脚本，用来kill这两个进程，创建了一个定时任务，一分钟执行一次。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line">kill -9 $(ps -ef | grep kdevtmpfsi| grep -v grep | awk &#x27;&#123;print $2&#125;&#x27;)</span><br><span class="line">kill -9 $(ps -ef | grep kinsing| grep -v grep | awk &#x27;&#123;print $2&#125;&#x27;)</span><br><span class="line">rm -rf /tmp/kdevtmpfsi </span><br><span class="line">rm -rf /var/tmp/kinsing  </span><br><span class="line">echo &quot;----------------------------------------------------------------------------&quot;</span><br><span class="line">endDate=`date +&quot;%Y-%m-%d %H:%M:%S&quot;`</span><br><span class="line">echo &quot;★[$endDate] Successful&quot;</span><br><span class="line">echo &quot;----------------------------------------------------------------------------&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p>后来解决了。</p>
+<p>因为服务器学校组织的，长时间下来积累了一些废弃的应用和开放了一下不必要的端口，后来根据阿里云安全中心的提示，发现是 redis 6379配置问题。</p>
+<p>具体相关可以查看阿里云的文档。</p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://help.aliyun.com/knowledge_detail/37447.html" >https://help.aliyun.com/knowledge_detail/37447.html<i class="fas fa-external-link-alt"></i></a> </p>
+</blockquote>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">阿里云ECS centos6被挖矿病毒kdevtmpfsi侵入解决过程</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Mr.Su</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2020-03-30 14:52:16</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2020-0413-阿里云ECScentos6被挖矿病毒kdevtmpfsi侵入解决过程/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E9%BB%91%E5%AE%A2/">#黑客</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%8C%96%E7%9F%BF/">#挖矿</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/centos6/">#centos6</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/shell/">#shell</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2020-0413-%E4%B8%93%E4%B8%9A%E5%AF%BC%E8%AE%BA%E8%AF%BE%E4%B8%8A%E7%9A%84%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">专业导论课上的大学阶段web项目开发经验分享</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2020-0321-Hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%88%B0Coding%E5%92%8CGithub/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo 自定义域名双线部署到Coding和Github</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%97%87%E7%8A%B6"><span class="nav-number">1.</span> <span class="nav-text">症状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E6%9D%80%E6%8E%89%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">尝试杀掉进程和删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8service%E4%BB%A3%E6%9B%BFsystemctl"><span class="nav-number">2.2.</span> <span class="nav-text">使用service代替systemctl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">kill守护进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%8F%E8%94%BDIP%E5%9C%B0%E5%9D%80%EF%BC%8C%E9%87%8D%E7%BD%AE%E5%85%AC%E9%92%A5%E5%92%8C%E5%AE%9E%E4%BE%8B%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">屏蔽IP地址，重置公钥和实例远程登录密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E6%8F%90%E4%BA%A4%E5%B7%A5%E5%8D%95"><span class="nav-number">2.5.</span> <span class="nav-text">阿里云提交工单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E6%9C%89%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.6.</span> <span class="nav-text">查看是否有定时任务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">最终解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-number">4.</span> <span class="nav-text">后续</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Mr.Su</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    鲁ICP备15022835号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
