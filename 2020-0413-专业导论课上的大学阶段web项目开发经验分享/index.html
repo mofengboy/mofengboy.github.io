@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
     <meta name="author" content="Mr.Su">
     
     <title>
@@ -17,14 +17,14 @@
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/null">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/font/css/brands.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"sunan.me","root":"/","language":"en"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"1.0.0"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -82,6 +82,22 @@
                     
                         <li class="menu-item">
                             <a class=""
+                               href="/photo"
+                            >
+                                PHOTO
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/cookbook"
+                            >
+                                菜谱
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
                                href="/about"
                             >
                                 ABOUT
@@ -89,9 +105,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -111,6 +133,16 @@
                 <li class="drawer-menu-item flex-center">
                     <a class=""
                        href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/photo">PHOTO</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/cookbook">菜谱</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -210,13 +242,23 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p><img src="https://pic.downk.cc/item/5e9d98acc2a9a83be5b0302c.png"></p>
+                <p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic.downk.cc/item/5e9d98acc2a9a83be5b0302c.png"
+                     
+                ></p>
 <p>这是一篇整理稿。内容可能不尽相同，但也有一定的补充，仍然采用第一人称口吻。</p>
 <h3 id="WEB开发讲座"><a href="#WEB开发讲座" class="headerlink" title="WEB开发讲座"></a>WEB开发讲座</h3><p>大家好，今天我来和大家分享一下关于web开发的基本知识和开发经验。</p>
 <p>因为我们目前的目的也是为了做一些项目，也不是为了考试什么的，所以我今天不会纠结于一些基础知识。今天主要是从如何快速构建web项目的方向来讲解。</p>
  <span id="more"></span>
 
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img src="https://pic.downk.cc/item/5e9d9605c2a9a83be5adf044.png"></p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic.downk.cc/item/5e9d9605c2a9a83be5adf044.png"
+                     
+                ></p>
 <p>今天我会分为四个部分来分别介绍。</p>
 <p>第一部分主要讲简单的讲一下web的基础和框架。也会简单的说一下平时我们遇到的库和框架的区别。</p>
 <p>第二部分是后端框架ThinkPHP php语言就不介绍了，入门还是比较容易的，主要来说一下框架如何上手，结合thinkphp框架即使php语言在懵懂阶段，但只要理解了这个框架的思想也可以很快的搭建完一个后端。</p>
@@ -227,10 +269,25 @@
 <p>CSS是层叠样式表。用来控制样式（View），规范来说，html上虽然也有一些控制样式的标签，比如控制表格宽度，表格边框什么的，但是不推荐使用，因为这是css的活，如果你用一些IDE来写代码的话，他应该会提示你，建议你不要这样做。每种语言做好自己的就够了，这也是我们编程的思想，要不然你写的代码就会很乱。</p>
 <p>JavaScript。负责调度数据和实现某种展现逻辑。这种语言就有点感觉了，他和上面那俩都不是一个级别的。不过js入门也不难，也可以很快学会。但是如果深入起来，他就是个大家伙了，尤其这几年已将成为了全栈的语言。他可以用来做前端、后端、游戏、人工智能、物联网和机器人编程等，我简单提一下js用作人工智能的情况，因为我感觉这方面可以做出来点东西。现在我发现很多软件，包括游戏，甚至是编程语言都在向跨平台，web化方向发展，举个例子就比如微信小程序等各种小程序都是开发者开发好之后，直接相当于部署到各个设备，不管你是什么手机，只要你安装离微信就可以。而且还是点开即用，无需安装。在加上像谷歌这样的大公司已经开源了一些人工智能的js框架，TensorFlow、Brain什么的，我们完全可以开发出一个运行在客户端的机器学习算法。这样做的好处就是机器学习如果实时计算的话，恐怕服务器很难承受那么的压力，这样把计算量分到客户那里，就会减少很多压力。好了这个就说到这里，我们继续。</p>
 <h3 id="框架和库的区别"><a href="#框架和库的区别" class="headerlink" title="框架和库的区别"></a>框架和库的区别</h3><p>现在有很多的库和框架，初学可能有点摸不清哪个好，我也不说哪个好哈，我分享一下我理解的部分。</p>
-<p> <img src="https://pic.downk.cc/item/5e9d994ac2a9a83be5b0ab28.png"></p>
+<p> <img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic.downk.cc/item/5e9d994ac2a9a83be5b0ab28.png"
+                     
+                ></p>
 <p>框架就是提供了前端项目整体解决在实际中，像node、vue就属于框架，而jQuery、React、就是库，在前者中我们完全可以自由的使用后者，同时也可以没有前者的基础之上使用后者，都是很自由，控制权始终在我们的手中，但是使用框架时候就必须按照它的规范来进行模块化的开发.</p>
-<p><img src="file:///C:\Users\me\AppData\Local\Temp\ksohtml16540\wps1.jpg" alt="img"> </p>
-<p> <img src="https://pic.downk.cc/item/5e9d9970c2a9a83be5b0c966.png"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="file:///C:\Users\me\AppData\Local\Temp\ksohtml16540\wps1.jpg"
+                      alt="img"
+                > </p>
+<p> <img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic.downk.cc/item/5e9d9970c2a9a83be5b0c966.png"
+                     
+                ></p>
 <p>Vue.js</p>
 <p>下面我通过 vue.js 介绍一下前端框架对我们的开发带来的好处以及他自身的优点。</p>
 <h4 id="生态支持"><a href="#生态支持" class="headerlink" title="生态支持"></a>生态支持</h4><p>首先它是国人开发，拥有强大的中文社区和生态。框架和其衍生产品的官方文档就是中英双语的。因为我们中国在国际上的话语权越来越强，当然在前端框架方面也不能落后。Vue在国际交友网站Github上的排名还是很靠前的。</p>
@@ -242,7 +299,12 @@
 <p> 而Virtual DOM则是虚拟DOM的英文，简单来说，他就是一种可以预先通过JavaScript进行各种计算，把最终的DOM操作计算出来并优化，由于这个DOM操作属于预处理操作，并没有真实的操作DOM，所以叫做虚拟DOM。最后在计算完毕才真正将DOM操作提交，将DOM操作变化反映到DOM树上。</p>
 <p>之前使用原生js或者jquery写页面的时候会发现操作DOM是一件非常麻烦的一件事情，往往是DOM标签和js逻辑同时写在js文件里，数据交互时不时还要写很多的input隐藏域，如果没有好的代码规范的话会显得代码非常冗余混乱，耦合性高并且难以维护。</p>
 <p>另外一方面在浏览器里一遍又一遍的渲染DOM是非常非常消耗性能的，常常会出现页面卡死的情况；所以尽量减少对DOM的操作成为了优化前端性能的必要手段，vue就是将DOM的对比放在了js层，通过对比不同之处来选择渲染DOM节点，从而提高渲染效率。</p>
-<h3 id="后端框架"><a href="#后端框架" class="headerlink" title="后端框架"></a>后端框架</h3><p><img src="https://pic.downk.cc/item/5e9d9a44c2a9a83be5b14d58.png"></p>
+<h3 id="后端框架"><a href="#后端框架" class="headerlink" title="后端框架"></a>后端框架</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic.downk.cc/item/5e9d9a44c2a9a83be5b14d58.png"
+                     
+                ></p>
 <p>这里用我比较熟悉的一个php框架 thinkPHP来介绍。作为一个整体开发解决方案，ThinkPHP能够解决应用开发中的大多数需要，因为其自身包含了底层架构、兼容处理、基类库、数据库访问层、模板引擎、缓存机制、插件机制等常用的组件，并且对于跨版本、跨平台和跨数据库移植都比较方便。并且每个组件都是官方精心设计和完善的，应用开发过程仅仅需要关注业务逻辑，就比如ThinkPHP有个模型的概念，每个模型对应数据库的一张数据表，操作这个模型实例就是操作数据库，这种方式可以使你即使不太懂sql语言，也能完成基本的增删改查功能。</p>
 <h4 id="社区支持"><a href="#社区支持" class="headerlink" title="社区支持"></a>社区支持</h4><p>还有第二点和vue一样，是国产的。他的生态也非常强，也不能说生态强，他的社区强，事情资源和讨论非常丰富。开发中遇到的绝大数问题在网上都能搜到解决办法。</p>
 <p>还有最重要的是他上手简单。</p>
@@ -251,12 +313,22 @@
 <h4 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h4><p>简单来说就是对数据库进行封装。</p>
 <p>文件管理，比如我们有用户的上传和下载文件需求，或者上传头像什么的，用thinkPHP框架的话，并不需要你的额外操作，只要调用相应的方法就可以。</p>
 <h4 id="ThinkPHP的扩展机制"><a href="#ThinkPHP的扩展机制" class="headerlink" title="ThinkPHP的扩展机制"></a>ThinkPHP的扩展机制</h4><p>扩展机制是thinkPHP的核心功能之一，因为thinkPHP为了让新手更容易上手，所以封装了大量的东西，但是这样也一定会降低灵活性，如果把thinkPHP框架与java的springboot框架作比较，这两个框架同样是对业务底层进行封装，但springboot框架是要自己来完成封装，有很大的灵活性，却对新手不那么友好，因为你需要学很多额外的，业务之外的知识，同时也不见得能做好优化。所以ThinkPHP为了增强灵活性而又不提高上手的难度，在核心中加入了扩展机制。让用户自定义来扩展扩展的功能。</p>
-<h3 id="前后端分离式开发"><a href="#前后端分离式开发" class="headerlink" title="前后端分离式开发"></a>前后端分离式开发</h3><p><strong><img src="https://pic.downk.cc/item/5e9d9be5c2a9a83be5b2970d.png"></strong></p>
+<h3 id="前后端分离式开发"><a href="#前后端分离式开发" class="headerlink" title="前后端分离式开发"></a>前后端分离式开发</h3><p><strong><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic.downk.cc/item/5e9d9be5c2a9a83be5b2970d.png"
+                     
+                ></strong></p>
 <p>首先，开发团队前后端分离化，让前后端工程师只需要专注于前端或后端的开发。</p>
 <p>第二点是能更好的适应复杂多变的前端需求。我们这个阶段做项目按照软件工程那样先写文档在写项目的应该很少吧，至少我没见过。当然也会写文档，但文档上基本只是一个大概的设计，而且文档上写的也不能保证以后就要按照这个做。尤其对于前端来说，灵感一来，就改了。这时候如果我们前后端写在一起，就会非常恼火，因为前端一改，后端要改好多，牵一发而动全身。而前端却又要照顾后端，不能设计出更好看的前端，也很恼火。这时候一种新的解决办法，前后端分离式开发逐渐引起了我们的重视。逐渐我们摸索出了一套流程。</p>
 <p>后端把各种功能做成API,放在第三方接口管理平台EOlinker上，前端用http请求去调用这些API,这样前后端随意折腾，只要保证api没有大的变化就行。</p>
 <p>这样我们通过api文档进行交流，大大减少了内耗，提高了效率，增加了友谊，终于不会因为修改需求而干架了。</p>
-<h3 id="模块式开发"><a href="#模块式开发" class="headerlink" title="模块式开发"></a>模块式开发</h3><p><img src="https://pic.downk.cc/item/5e9d9c0ec2a9a83be5b2b428.png"></p>
+<h3 id="模块式开发"><a href="#模块式开发" class="headerlink" title="模块式开发"></a>模块式开发</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic.downk.cc/item/5e9d9c0ec2a9a83be5b2b428.png"
+                     
+                ></p>
 <p>现在我们更进一步，介绍一个更能增加友谊的方法，模块式开发。</p>
 <p>如果说前后端分离式开发能减少前端和后端之间不必要的内耗，而模块式开发能最大限度的减少组内之间的内耗。</p>
 <p>模块式开发的好处有很多，我还是简单提几个对我们帮助最大的。</p>
@@ -380,7 +452,7 @@
             
                 <span>2015</span> -
             
-            2023
+            2024
             
                 &nbsp;<i class="fas fa-heart icon-animate"></i>
                 &nbsp;<a href="/">Mr.Su</a>
@@ -388,7 +460,7 @@
         </div>
         
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="/">Gusiii</a>
         </div>
         
             <div class="icp-info info-item">
@@ -404,7 +476,7 @@
                 
                     <a target="_blank" rel="nofollow" href="https://github.com/mofengboy">
                 
-                    This site is provided with deployment services by <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                    This site is provided with deployment services by <span class="tooltip" data-content="GitHub Pages">&nbsp;Github Pages</span>
                 
                     </a>
                 
@@ -480,33 +552,64 @@
 
 
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
 </main>
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/dark-light-toggle.js"></script>
 
 
 
 
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/local-search.js"></script>
 
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts">
     
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/post-helper.js"></script>
         
-            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/libs/anime.min.js"></script>
         
         
-            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@1.0.0/source/js/toc.js"></script>
         
     
 </div>

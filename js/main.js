@@ -4,9 +4,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const { version, local_search, code_block, code_copy, lazyload } = KEEP.theme_config
 
   KEEP.themeInfo = {
-    theme: `Keep v${version}`,
-    author: 'XPoet',
-    repository: 'https://github.com/XPoet/hexo-theme-keep'
+    theme: `Gusiii v${version}`,
+    author: 'MuFeng',
+    repository: ''
   }
 
   KEEP.localStorageKey = 'KEEP-THEME-STATUS'
