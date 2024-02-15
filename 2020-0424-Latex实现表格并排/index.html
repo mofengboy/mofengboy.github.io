@@ -1,548 +1,513 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html><html lang="zh-CN">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="Mr.Su">
-    
-    <title>
-        
-            Latex实现表格并排 |
-        
-        Sunan&#39;s blog
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="utf-8">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Latex实现表格并排 - SuNan's Blog</title>
 
-    <link rel="shortcut icon" href="/null">
-    
-<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+  
+    <meta name="description" content="笔记。 Latex 表格并排。 12345678910111213141516171819202122232425262728293031323334353637383940\begin&amp;#123;minipage&amp;#125;&amp;#123;\textwidth&amp;#125;  \begin&amp;#123;minipage&amp;#125;[h]&amp;#123;0.5\textwidth&amp;#125;    \cent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Latex实现表格并排">
+<meta property="og:url" content="https://sunan.me/2020-0424-Latex%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%B9%B6%E6%8E%92/index.html">
+<meta property="og:site_name" content="SuNan&#39;s Blog">
+<meta property="og:description" content="笔记。 Latex 表格并排。 12345678910111213141516171819202122232425262728293031323334353637383940\begin&amp;#123;minipage&amp;#125;&amp;#123;\textwidth&amp;#125;  \begin&amp;#123;minipage&amp;#125;[h]&amp;#123;0.5\textwidth&amp;#125;    \cent">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-24T04:24:16.000Z">
+<meta property="article:modified_time" content="2020-04-24T04:26:12.000Z">
+<meta property="article:author" content="Mufeng">
+<meta property="article:tag" content="Latex">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="Latex">
 
-    
-<link rel="stylesheet" href="/font/css/regular.min.css">
+  <!-- feed -->
+  
 
-    
-<link rel="stylesheet" href="/font/css/solid.min.css">
+  <link rel="stylesheet" href="/css/main.css?v=1.26.8">
 
-    
-<link rel="stylesheet" href="/font/css/brands.min.css">
+  
 
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {}
-    KEEP.hexo_config = {"hostname":"sunan.me","root":"/","language":"en"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#5390fe","logo":null,"favicon":null,"avatar":"/images/avatar.svg","font_size":"18px","font_family":"STSong, Times New Roman","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"header_transparent":true,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"1.0.0"}
-    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
-    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
-  </script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+  
 
-
+  
+</head>
 <body>
-<div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
-    
 
-    
+<div class="l_body s:aa content tech" id="start" layout="post" text-indent><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div></a><a class="title" href="/"><div class="main" ff="title">SuNan's Blog</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="归档" href="/archives" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="关于" href="/about/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023-0728-Embarking%20on%20a%20New%20Journey/"><span class="title">Embarking on a New Journey</span></a><a class="item title" href="/2021-0320-%E8%85%BE%E8%AE%AF%E6%9E%81%E5%AE%A2%E6%8A%80%E6%9C%AF%E6%8C%91%E6%88%98%E8%B5%9B%E7%AC%AC%E4%B8%89%E6%9C%9F%E7%A0%81%E4%B8%8A%E7%A7%8D%E6%A0%91Writeup/"><span class="title">腾讯极客技术挑战赛第三期码上种树Writeup</span></a><a class="item title" href="/2021-0504-%E5%9F%BA%E4%BA%8Epytorch%E7%9A%84Mnist%E6%89%8B%E5%86%99%E4%BD%93%E8%AF%86%E5%88%AB/"><span class="title">基于pytorch的Mnist手写体识别</span></a><a class="item title" href="/2022-0114-%E5%9F%BA%E4%BA%8Eesp8266%E7%9A%84%E5%A3%B0%E6%8E%A7%E5%92%8Capp%E6%8E%A7%E5%88%B6%E7%9A%84%E5%B0%8F%E5%8F%B0%E7%81%AF/"><span class="title">基于esp8266的小爱同学和app控制的小台灯</span></a><a class="item title" href="/2021-0328-%E5%88%A9%E7%94%A8WSL%E5%9C%A8windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85SpiningUp/"><span class="title">利用WSL在window环境下安装SpiningUp.md</span></a><a class="item title" href="/2020-0920-%E5%9F%BA%E4%BA%8Epaddlepaddle%E5%AE%9E%E7%8E%B0%E7%9A%84word2vec%E6%A8%A1%E5%9E%8B/"><span class="title">使用paddlepaddle实现word2vec模型</span></a><a class="item title" href="/2020-0813-%E5%88%A9%E7%94%A8csv%E5%8C%85%E8%AF%BB%E5%8F%96%E6%88%96%E5%86%99%E5%85%A5tsv%E6%96%87%E4%BB%B6/"><span class="title">利用csv包读取和写入tsv文件</span></a><a class="item title" href="/2020-0803-SpringBoot%E4%B8%AD%E9%9D%99%E6%80%81%E7%B1%BB%E8%B0%83%E7%94%A8%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E7%9A%84Mapper/"><span class="title">SpringBoot中静态类调用自动注入的Mapper</span></a><a class="item title" href="/2020-0612-%E5%8A%A8%E7%89%A9%E8%AF%86%E5%88%AB%E4%B8%93%E5%AE%B6%E7%B3%BB%E7%BB%9Fweb%E7%89%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/"><span class="title">动物识别专家系统web版|人工智能导论</span></a><a class="item title" href="/2020-0413-%E4%B8%93%E4%B8%9A%E5%AF%BC%E8%AE%BA%E8%AF%BE%E4%B8%8A%E7%9A%84%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"><span class="title">专业导论课上的大学阶段web项目开发经验分享</span></a></div></widget>
 </div>
 
+</div></aside><div class="l_main" id="main">
 
-<main class="page-container">
 
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/tools/">tools</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2020-04-24T04:24:16.000Z">2020-04-24</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2020-04-24T04:26:12.000Z">2020-04-24</time></span></div></div></div>
     
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            
-<header class="header-wrapper">
-
-    <div class="header-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-               Sunan&#39;s blog
-            </a>
-        </div>
-
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/"
-                            >
-                                HOME
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                ARCHIVES
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/photo"
-                            >
-                                PHOTO
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/cookbook"
-                            >
-                                菜谱
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                ABOUT
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/">HOME</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">ARCHIVES</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/photo">PHOTO</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/cookbook">菜谱</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">ABOUT</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            <div class="article-title">
-                <span class="title-hover-animation">Latex实现表格并排</span>
-            </div>
-
-            
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/images/avatar.svg">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">Mr.Su</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            
-<div class="article-meta-info">
-    <span class="article-date article-meta-item">
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Latex实现表格并排</span></h1>
         
-            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
-        
-        <span class="pc">2020-04-24 12:24:16</span>
-        <span class="mobile">2020-04-24 12:24</span>
-    </span>
+      </div>
+    </div>
     
-        <span class="article-update-date article-meta-item">
-        <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2020-04-24 12:26:12</span>
-    </span>
-    
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/tools/">tools</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/Latex/">Latex</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-</div>
-
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content keep-markdown-body">
-                
-
-                <p>笔记。</p>
+  </div>
+  </div><article class="md-text content"><p>笔记。</p>
 <p>Latex 表格并排。</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;minipage&#125;&#123;<span class="keyword">\textwidth</span>&#125;</span><br><span class="line">  <span class="keyword">\begin</span>&#123;minipage&#125;[h]&#123;0.5<span class="keyword">\textwidth</span>&#125;</span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\begin</span>&#123;threeparttable&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tabular&#125;&#123;l|ll|l&#125;</span><br><span class="line">        <span class="keyword">\hline</span></span><br><span class="line">                 <span class="built_in">&amp;</span> OFF   <span class="built_in">&amp;</span> NOT   <span class="built_in">&amp;</span> TOTAL <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">        OLIDv1.0 <span class="built_in">&amp;</span> 4400  <span class="built_in">&amp;</span> 8840  <span class="built_in">&amp;</span> 859   <span class="keyword">\\</span></span><br><span class="line">        EXPAND   <span class="built_in">&amp;</span> 27038 <span class="built_in">&amp;</span> 27107 <span class="built_in">&amp;</span> 54145 <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tabular&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tablenotes&#125;</span><br><span class="line">        <span class="keyword">\footnotesize</span></span><br><span class="line">        <span class="keyword">\item</span>[] The  <span class="comment">%此处加入注释*信息</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tablenotes&#125;</span><br><span class="line">    <span class="keyword">\end</span>&#123;threeparttable&#125;</span><br><span class="line">    <span class="keyword">\makeatletter</span><span class="keyword">\def</span><span class="keyword">\@captype</span>&#123;table&#125;<span class="keyword">\makeatother</span><span class="keyword">\caption</span>&#123;Data set:Task A&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;Data set:Task A&#125;</span><br><span class="line">  <span class="keyword">\end</span>&#123;minipage&#125;</span><br><span class="line">  <span class="keyword">\begin</span>&#123;minipage&#125;[h]&#123;0.5<span class="keyword">\textwidth</span>&#125;</span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\begin</span>&#123;threeparttable&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tabular&#125;&#123;cccc&#125;</span><br><span class="line">        <span class="keyword">\hline</span></span><br><span class="line">        A   <span class="built_in">&amp;</span> B   <span class="built_in">&amp;</span> C   <span class="built_in">&amp;</span> Test <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> TIN <span class="built_in">&amp;</span> IND <span class="built_in">&amp;</span> 580  <span class="keyword">\\</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> TIN <span class="built_in">&amp;</span> OTH <span class="built_in">&amp;</span> 80   <span class="keyword">\\</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> TIN <span class="built_in">&amp;</span> GPR <span class="built_in">&amp;</span> 190  <span class="keyword">\\</span></span><br><span class="line">        OFF <span class="built_in">&amp;</span> UNT <span class="built_in">&amp;</span> -   <span class="built_in">&amp;</span> 572  <span class="keyword">\\</span></span><br><span class="line">        NOT <span class="built_in">&amp;</span> -   <span class="built_in">&amp;</span> -   <span class="built_in">&amp;</span> 2807 <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">        ALL <span class="built_in">&amp;</span>     <span class="built_in">&amp;</span>     <span class="built_in">&amp;</span> 3887 <span class="keyword">\\</span> <span class="keyword">\hline</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tabular&#125;</span><br><span class="line">      <span class="keyword">\begin</span>&#123;tablenotes&#125;</span><br><span class="line">        <span class="keyword">\footnotesize</span></span><br><span class="line">        <span class="keyword">\item</span>[]  <span class="comment">%此处加入注释*信息</span></span><br><span class="line">      <span class="keyword">\end</span>&#123;tablenotes&#125;</span><br><span class="line">    <span class="keyword">\end</span>&#123;threeparttable&#125;</span><br><span class="line">    <span class="keyword">\makeatletter</span><span class="keyword">\def</span><span class="keyword">\@captype</span>&#123;table&#125;<span class="keyword">\makeatother</span><span class="keyword">\caption</span>&#123;Dataset statistics&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;Dataset statistics&#125;</span><br><span class="line">  <span class="keyword">\end</span>&#123;minipage&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;minipage&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 
-            </div>
-
-            
-                <div class="post-copyright-info">
-                    
-<div class="article-copyright-info-container">
-    <ul class="copyright-info-content">
-        <li class="post-title">
-            <span class="type">Post title</span>: <span class="content">Latex实现表格并排</span>
-        </li>
-        <li class="post-author">
-            <span class="type">Post author</span>: <span class="content">Mr.Su</span>
-        </li>
-        <li class="post-time">
-            <span class="type">Create time</span>: <span class="content">2020-04-24 12:24:16</span>
-        </li>
-        <li class="post-link">
-            <span class="type">Post link</span>: <span class="content">2020-0424-Latex实现表格并排/</span>
-        </li>
-        <li class="post-license">
-            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
-        </li>
-    </ul>
-    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
-        <i class="fa-solid fa-copy"></i>
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://sunan.me/2020-0424-Latex%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%B9%B6%E6%8E%92/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://sunan.me/2020-0424-Latex%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%B9%B6%E6%8E%92/&title=Latex实现表格并排 - SuNan's Blog&summary=笔记。
+Latex 表格并排。
+12345678910111213141516171819202122232425262728293031323334353637383940\begin&#123;minipage&#125;&#12..."><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=Latex实现表格并排 - SuNan's Blog&amp;body=https://sunan.me/2020-0424-Latex%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%B9%B6%E6%8E%92/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://sunan.me/2020-0424-Latex%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%B9%B6%E6%8E%92/"/>
+        </div>
+        
+      </div>
+    </section>
     </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2020-0612-%E5%8A%A8%E7%89%A9%E8%AF%86%E5%88%AB%E4%B8%93%E5%AE%B6%E7%B3%BB%E7%BB%9Fweb%E7%89%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">动物识别专家系统web版|人工智能导论</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2020-0413-%E4%B8%93%E4%B8%9A%E5%AF%BC%E8%AE%BA%E8%AF%BE%E4%B8%8A%E7%9A%84%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">专业导论课上的大学阶段web项目开发经验分享</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><center>© 2015 - 2024 | Mr.Su</center>
+<center>鲁ICP备15022835号</center>
+<center>Powered by Hexo | Theme Stellar</center>
+<center>This site is provided with deployment services by Github Pages</center>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+</aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
 </div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
 
-                </div>
-            
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
 
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/Latex/">#Latex</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
+</script>
 
-            
-                <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2020-0612-%E5%8A%A8%E7%89%A9%E8%AF%86%E5%88%AB%E4%B8%93%E5%AE%B6%E7%B3%BB%E7%BB%9Fweb%E7%89%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">动物识别专家系统web版|人工智能导论</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                            </a>
-                        </div>
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                               rel="next"
-                               href="/2020-0413-%E4%B8%93%E4%B8%9A%E5%AF%BC%E8%AE%BA%E8%AF%BE%E4%B8%8A%E7%9A%84%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"
-                            >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">专业导论课上的大学阶段web项目开发经验分享</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                                <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
 
-            
-        </div>
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
 
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        
-    </div>
-</div>
-
-            </div>
-        
-    </div>
-</div>
-
-
-                
-            </div>
-
-        </div>
-
-        <div class="page-main-content-bottom">
-            
-<footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-                <span>2015</span> -
-            
-            2024
-            
-                &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">Mr.Su</a>
-            
-        </div>
-        
-        <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="/">Gusiii</a>
-        </div>
-        
-            <div class="icp-info info-item">
-                <a target="_blank" rel="nofollow"
-                   href="https://beian.miit.gov.cn"
-                >
-                    鲁ICP备15022835号
-                </a>
-            </div>
-        
-        
-            <div class="deploy-info info-item">
-                
-                    <a target="_blank" rel="nofollow" href="https://github.com/mofengboy">
-                
-                    This site is provided with deployment services by <span class="tooltip" data-content="GitHub Pages">&nbsp;Github Pages</span>
-                
-                    </a>
-                
-            </div>
-        
-    </div>
-</footer>
-
-        </div>
-    </div>
-
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
     
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
 
-        <!-- go comment -->
-        
-    </ul>
-</div>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
 
-        </div>
-    
+<!-- required -->
+<script src="/js/main.js?v=1.26.8" async></script>
 
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
-
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
-
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    <div class="zoom-in-image-mask">
-    <img class="zoom-in-image">
-</div>
-
-
-    
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-</main>
-
-
-
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/main.js"></script>
-
-<script src="/js/header-shrink.js"></script>
-
-<script src="/js/back2top.js"></script>
-
-<script src="/js/dark-light-toggle.js"></script>
+<!-- optional -->
 
 
 
+<script>
+  ctx.services = {
+    fcircle: `/js/services/fcircle.js`,
+    friends: `/js/services/friends.js`,
+    ghinfo: `/js/services/ghinfo.js`,
+    siteinfo: `/js/services/siteinfo.js`,
+    mdrender: `/js/services/mdrender.js`,
+    memos: `/js/services/memos.js`,
+    sites: `/js/services/sites.js`,
+    timeline: `/js/services/timeline.js`,
+    weibo: `/js/services/weibo.js`,
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id];
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`stellar-${id}-api`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('stellar-memos-api');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
 
 
-    
-<script src="/js/local-search.js"></script>
+<!-- inject -->
 
-
-
-
-    
-<script src="/js/code-block.js"></script>
-
-
-
-
-
-<div class="post-scripts">
-    
-        
-<script src="/js/post-helper.js"></script>
-
-        
-            
-<script src="/js/libs/anime.min.js"></script>
-
-        
-        
-            
-<script src="/js/toc.js"></script>
-
-        
-    
-</div>
-
-
-
-</body>
-</html>
+</div></body></html>
